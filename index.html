@@ -1,0 +1,1406 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EEPRON Plywood — Premium Calibrated Plywood | Kolkata & Lucknow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Saira Condensed', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        :root {
+            --primary-dark: #4a2e1a;
+            --primary-light: #8a5a2e;
+            --accent-cream: #f5ede0;
+            --accent-gold: #d99c2b;
+            --text-dark: #2a1f15;
+            --container-max: 1200px;
+            --section-pad: 80px 80px;
+            --section-pad-sm: 60px 32px;
+            --section-pad-xs: 40px 20px;
+        }
+
+        /* ── CONTAINER ── */
+        .container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 80px;
+        }
+        @media (max-width: 900px) { .container { padding: 0 32px; } }
+        @media (max-width: 480px) { .container { padding: 0 20px; } }
+
+        /* ── HEADER ── */
+        header {
+            background: transparent;
+            position: fixed;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+        }
+        header > div:first-child {
+            background: transparent;
+            padding: 20px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+        .top-bar-phone {
+            color: #fff;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .top-bar-phone span { font-size: 20px; }
+        .top-bar-phone a { color: #fff; text-decoration: none; font-weight: 700; letter-spacing: 0.5px; }
+        .top-bar-logo { text-align: center; flex: 1; display: flex; justify-content: center; align-items: center; }
+        .top-bar-logo img { height: 100px; display: block; }
+        .nav-wrapper { margin: 0 80px; border: 1px solid rgba(255,255,255,0.2); display: flex; }
+        nav { width: 100%; }
+        nav ul { display: flex; list-style: none; gap: 0; margin: 0; }
+        nav li { flex: 1; text-align: center; border-right: 1px solid rgba(255,255,255,0.15); }
+        nav li:last-child { border-right: none; }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            transition: color 0.3s;
+            display: block;
+            font-weight: 700;
+            padding: 18px 10px;
+        }
+        nav a:hover { color: var(--accent-gold); background: rgba(217,156,43,0.1); }
+        .cta-button {
+            background: var(--accent-gold);
+            color: white;
+            padding: 12px 35px;
+            border: none;
+            font-size: 13px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            font-family: 'Saira Condensed', sans-serif;
+            font-weight: 700;
+        }
+        .cta-button:hover { background: #b87f1f; }
+
+        /* ── HAMBURGER MENU ── */
+        .ham-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 10px;
+            z-index: 1001;
+        }
+        .ham-menu span {
+            width: 25px;
+            height: 2.5px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .ham-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translateY(10px);
+        }
+        .ham-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .ham-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translateY(-10px);
+        }
+
+        /* ── MOBILE NAV ── */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: slideIn 0.3s ease;
+        }
+        .mobile-nav.active {
+            display: flex;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .mobile-nav a {
+            color: #fff;
+            font-size: 24px;
+            text-decoration: none;
+            margin: 20px 0;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .mobile-nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* ── HERO ── */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-video-background {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0; pointer-events: none; overflow: hidden;
+        }
+        .hero-video-background video {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100vw; height: 56.25vw;
+            min-height: 100vh; min-width: 177.78vh; object-fit: cover;
+        }
+        .hero-video-background iframe {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100vw; height: 56.25vw;
+            min-height: 100vh; min-width: 177.78vh; border: 0;
+        }
+        .hero-overlay {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.65); z-index: 1;
+        }
+        .hero-content-left {
+            position: relative; z-index: 2;
+            display: flex; flex-direction: column; gap: 20px;
+            padding: 80px;
+            max-width: 760px;
+            margin-top: 120px;
+        }
+        .hero h1 { font-size: 68px; margin: 0; letter-spacing: 1px; line-height: 1.05; font-weight: 900; text-transform: uppercase; }
+        .hero-subtitle { font-size: 16px; margin: 0; letter-spacing: 0.5px; line-height: 1.7; font-weight: 400; }
+        .hero-cta-section-left { display: flex; align-items: center; gap: 60px; margin-top: 15px; }
+        .hero-reviews-left { display: flex; flex-direction: column; gap: 5px; }
+        .review-number-left { font-size: 20px; font-weight: bold; color: #fff; }
+        .review-label-left { font-size: 13px; color: #ddd; letter-spacing: 0.5px; }
+
+        /* ── HERO TICKER ── */
+        .hero-ticker {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 3;
+            background: #7a4d12;
+            overflow: hidden;
+            height: 44px;
+            display: flex;
+            align-items: center;
+        }
+        .hero-ticker-track {
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            animation: tickerScroll 28s linear infinite;
+            will-change: transform;
+        }
+        .hero-ticker-track:hover { animation-play-state: paused; }
+        @keyframes tickerScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .ticker-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            padding: 0 40px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+        .ticker-dot {
+            width: 5px;
+            height: 5px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* ── TRUST SECTION ── */
+        .trust-section {
+            background: var(--primary-dark);
+            color: #fff;
+        }
+        .trust-inner {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 50px 80px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        .trust-item { text-align: center; }
+        .trust-item h3 { font-size: 14px; margin-bottom: 10px; letter-spacing: 1px; }
+        .trust-item p { font-size: 12px; line-height: 1.8; opacity: 0.9; }
+
+        /* ── ABOUT SECTION ── */
+        .about-eepron-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 600px;
+        }
+        .about-left {
+            background: var(--primary-light);
+            padding: 60px 80px;
+            display: flex; flex-direction: column; justify-content: center; color: #fff;
+        }
+        .about-eyebrow { font-size: 12px; letter-spacing: 2px; margin-bottom: 20px; opacity: 0.9; display: flex; align-items: center; gap: 8px; }
+        .about-left h2 { font-size: 42px; font-weight: 900; line-height: 1.15; margin-bottom: 30px; text-transform: uppercase; }
+        .about-left p { font-size: 15px; line-height: 1.8; margin-bottom: 40px; opacity: 0.95; }
+        .about-icons {
+            background: var(--accent-cream);
+            padding: 60px 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-content: center;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .about-icons::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(245, 237, 224, 0.92);
+            z-index: 1;
+        }
+        .icon-block { text-align: center; position: relative; z-index: 2; }
+        .icon-box {
+            width: 100px; height: 100px; background: #f5f5f5;
+            border-radius: 15px; display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px; border: 3px solid #e0e0e0;
+        }
+        .icon-block h3 { font-size: 15px; font-weight: 900; margin-bottom: 12px; text-transform: uppercase; color: var(--text-dark); }
+        .icon-block p { font-size: 13px; line-height: 1.6; color: #666; }
+
+        /* ── SERVICES SECTION ── */
+        .services-section {
+            background: #1a1007;
+            padding: 100px 0;
+        }
+        .services-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        .services-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--accent-gold);
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+        .services-section h2 {
+            font-size: 50px;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            line-height: 1.05;
+            margin-bottom: 18px;
+        }
+        .services-section .services-sub {
+            font-size: 15px;
+            color: rgba(255,255,255,0.5);
+            max-width: 520px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        /* Product Tabs/Categories */
+        .product-categories {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 50px 0 70px;
+            flex-wrap: wrap;
+        }
+        .category-tab {
+            padding: 12px 28px;
+            background: rgba(217, 156, 43, 0.15);
+            border: 2px solid var(--accent-gold);
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            border-radius: 3px;
+        }
+        .category-tab.active {
+            background: var(--accent-gold);
+            color: #fff;
+        }
+        .category-tab:hover {
+            background: var(--accent-gold);
+            color: #fff;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+        .service-card {
+            background: #231508;
+            text-align: left;
+            padding: 0;
+            transition: background 0.35s;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .service-card:hover { background: #2e1b09; }
+        .service-card-image {
+            height: 320px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
+            position: relative;
+        }
+        .service-card:hover .service-card-image { transform: scale(1.04); }
+        .service-card-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 40%, rgba(15,8,2,0.85) 100%);
+        }
+        .service-card-body {
+            padding: 28px 32px 36px;
+            border-top: 2px solid rgba(217,156,43,0.25);
+        }
+        .service-card-number {
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: var(--accent-gold);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .service-card h3 {
+            font-size: 22px;
+            font-weight: 900;
+            margin-bottom: 14px;
+            color: #fff;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+        .service-card p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.8;
+        }
+
+        /* ── GALLERY SECTION ── */
+        .gallery-section { padding: 80px 0; background: #fff; }
+        .gallery-section h2 { text-align: center; font-size: 36px; margin-bottom: 12px; color: var(--text-dark); letter-spacing: 1px; }
+        .gallery-subtitle { text-align: center; font-size: 14px; color: #777; margin-bottom: 50px; }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        .gallery-item {
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+        }
+        .gallery-item::after {
+            content: '';
+            display: block;
+            padding-bottom: 100%;
+        }
+        .gallery-item-inner {
+            position: absolute; inset: 0;
+            background-size: cover; background-position: center;
+            transition: transform 0.4s ease;
+        }
+        .gallery-item:hover .gallery-item-inner { transform: scale(1.05); }
+        .gallery-item-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0);
+            transition: background 0.3s ease;
+        }
+        .gallery-item.video-item .gallery-item-overlay { background: rgba(0,0,0,0.25); }
+        .gallery-item.video-item:hover .gallery-item-overlay { background: rgba(0,0,0,0.4); }
+        .gallery-play-icon {
+            width: 60px; height: 60px; border-radius: 50%;
+            background: rgba(217, 156, 43, 0.9);
+            color: #fff; font-size: 26px;
+            display: flex; align-items: center; justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item.video-item:hover .gallery-play-icon { transform: scale(1.1); }
+
+        /* ── VIDEO LIGHTBOX ── */
+        .video-lightbox {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 500;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .video-lightbox.active { display: flex; }
+        .video-lightbox-content { position: relative; max-width: 90vw; max-height: 90vh; }
+        .video-lightbox video { max-width: 90vw; max-height: 85vh; border-radius: 8px; }
+        .video-lightbox-close {
+            position: absolute; top: -45px; right: 0;
+            font-size: 32px; color: #fff; cursor: pointer;
+            background: none; border: none;
+        }
+        .video-lightbox-close:hover { color: var(--accent-gold); }
+
+        /* ── CERTIFICATIONS ── */
+        .certifications-section { background: var(--primary-dark); color: #fff; padding: 60px 0; margin: 60px 0; }
+        .certifications-inner {
+            max-width: var(--container-max); margin: 0 auto; padding: 0 80px;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
+        }
+        .certification-item { text-align: center; }
+        .certification-item h3 { font-size: 16px; margin-bottom: 15px; letter-spacing: 1px; }
+        .certification-item p { font-size: 13px; line-height: 1.8; opacity: 0.9; }
+        .iso-badge {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: #fff;
+            padding: 15px 25px;
+            border-radius: 4px;
+            font-weight: 900;
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin-top: 15px;
+        }
+
+        /* ── FOUNDERS SECTION ── */
+        .founders-section {
+            padding: 80px 0;
+            background: #fff;
+        }
+        .founders-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        .founders-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+        .founders-section h2 {
+            font-size: 46px;
+            font-weight: 900;
+            color: var(--text-dark);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 14px;
+        }
+        .founders-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .founder-card {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .founder-image {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 30px;
+            border: 4px solid var(--accent-gold);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        .founder-card h3 {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--text-dark);
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        .founder-title {
+            font-size: 16px;
+            color: var(--accent-gold);
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .founder-bio {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.8;
+            max-width: 320px;
+        }
+
+        /* ── TESTIMONIALS ── */
+        .testimonials-section {
+            padding: 80px 0;
+            background: #ece8e1;
+        }
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .testimonials-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+        .testimonials-section h2 {
+            font-size: 46px;
+            font-weight: 900;
+            color: var(--text-dark);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 14px;
+        }
+        .testimonials-sub {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.7;
+            max-width: 620px;
+            margin: 0 auto;
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .testimonial-card {
+            background: transparent;
+            padding: 0 0 0 28px;
+            border-left: 3px solid #c8b99a;
+        }
+        .testimonial-text {
+            font-size: 15px;
+            color: #444;
+            margin-bottom: 28px;
+            line-height: 1.85;
+        }
+        .testimonial-author-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .testimonial-avatar {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #d0bfa8;
+        }
+        .testimonial-author {
+            font-weight: 800;
+            color: var(--text-dark);
+            font-size: 16px;
+        }
+        .testimonial-author span {
+            display: block;
+            font-size: 13px;
+            color: #888;
+            margin-top: 2px;
+        }
+
+        /* ── BULK ORDERS ── */
+        .financing-section { background: var(--accent-cream); padding: 80px 0; }
+        .financing-inner {
+            max-width: var(--container-max); margin: 0 auto; padding: 0 80px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+        }
+        .financing-inner h2 { font-size: 36px; margin-bottom: 20px; color: var(--text-dark); }
+        .financing-inner p { font-size: 14px; color: #555; margin-bottom: 20px; line-height: 1.8; }
+        .financing-list { list-style: none; margin: 20px 0; }
+        .financing-list li { padding: 10px 0; font-size: 14px; border-bottom: 1px solid rgba(0,0,0,0.07); }
+        .financing-list li span { color: var(--accent-gold); font-weight: bold; margin-right: 10px; }
+        .financing-img { height: 400px; border-radius: 5px; background-size: cover; background-position: center; }
+        .financing-img-group { display: flex; flex-direction: column; gap: 20px; height: 400px; }
+        .financing-img-group .financing-img { flex: 1; height: auto; }
+
+        /* ── NEWSLETTER ── */
+        .newsletter-section { background: var(--primary-dark); color: #fff; padding: 60px 0; }
+        .newsletter-inner { max-width: 700px; margin: 0 auto; text-align: center; padding: 0 80px; }
+        .newsletter-inner h2 { font-size: 32px; margin-bottom: 20px; }
+        .newsletter-inner p { font-size: 14px; margin-bottom: 30px; opacity: 0.9; }
+        .newsletter-form { display: flex; gap: 10px; }
+        .newsletter-form input { flex: 1; padding: 12px 15px; border: none; font-size: 13px; font-family: 'Saira Condensed', sans-serif; }
+        .newsletter-form button {
+            background: var(--accent-gold); color: white; border: none;
+            padding: 12px 30px; font-size: 13px; cursor: pointer;
+            font-family: 'Saira Condensed', sans-serif; font-weight: 700;
+        }
+        .newsletter-form button:hover { background: #b87f1f; }
+
+        /* ── FOOTER ── */
+        footer { background: #2e1c10; color: #ddd; padding: 60px 0 30px; }
+        .footer-inner {
+            max-width: var(--container-max); margin: 0 auto; padding: 0 80px;
+            display: grid; grid-template-columns: 2fr 1fr 2fr 1fr; gap: 40px; margin-bottom: 40px;
+        }
+        .footer-section h3 { color: #fff; margin-bottom: 15px; font-size: 14px; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 10px; font-size: 13px; }
+        .footer-section a { color: #ddd; text-decoration: none; transition: color 0.3s; }
+        .footer-section a:hover { color: var(--accent-gold); }
+        .footer-section p { font-size: 13px; line-height: 1.8; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding: 20px 80px 0; text-align: center; font-size: 12px; color: #999; max-width: var(--container-max); margin: 0 auto; }
+
+        /* ── WHATSAPP ── */
+        .whatsapp-float {
+            position: fixed; bottom: 25px; right: 25px; z-index: 200;
+            background: #25D366; width: 58px; height: 58px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3); text-decoration: none; transition: transform 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.08); }
+        .whatsapp-float svg { width: 30px; height: 30px; fill: #fff; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            :root { --container-max: 900px; }
+            .container { padding: 0 40px; }
+            header > div:first-child { padding: 20px 40px; }
+            .nav-wrapper { margin: 0 40px; }
+            .hero-content-left { padding: 60px 40px; }
+            .trust-inner { padding: 50px 40px; grid-template-columns: repeat(2, 1fr); }
+            .about-left { padding: 60px 40px; }
+            .about-icons { padding: 60px 30px; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+            .certifications-inner { padding: 0 40px; }
+            .financing-inner { padding: 0 40px; }
+            .newsletter-inner { padding: 0 40px; }
+            .footer-inner { padding: 0 40px; grid-template-columns: 1fr 1fr; gap: 30px; }
+            .footer-bottom { padding: 20px 40px 0; }
+        }
+
+        @media (max-width: 768px) {
+            header > div:first-child {
+                padding: 15px 20px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .nav-wrapper {
+                display: none;
+                width: 100%;
+                margin: 0;
+                border: none;
+                order: 3;
+            }
+            .top-bar-logo {
+                flex: 0;
+            }
+            .top-bar-logo img { height: 55px; }
+            .top-bar-phone { font-size: 14px; }
+            .top-bar-phone a { font-size: 14px; }
+            .cta-button { display: none; }
+            .ham-menu {
+                display: flex;
+            }
+            nav ul { flex-wrap: wrap; }
+            nav li { flex: 0 0 50%; }
+            nav a { font-size: 11px; padding: 14px 8px; }
+            .hero h1 { font-size: 36px; }
+            .hero-content-left { padding: 40px 24px; margin-top: 80px; max-width: 100%; }
+            .hero-cta-section-left { flex-wrap: wrap; gap: 20px; }
+            .trust-inner { grid-template-columns: 1fr 1fr; padding: 40px 24px; gap: 24px; }
+            .about-eepron-section { grid-template-columns: 1fr; }
+            .about-left { padding: 50px 24px; }
+            .about-left h2 { font-size: 32px; }
+            .about-icons { grid-template-columns: 1fr 1fr; padding: 40px 24px; gap: 20px; }
+            .services-section .container { padding: 0 24px; }
+            .services-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .certifications-inner { grid-template-columns: 1fr; padding: 0 24px; gap: 30px; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .founders-grid { grid-template-columns: 1fr; gap: 50px; }
+            .founder-image { width: 220px; height: 220px; }
+            .financing-inner { grid-template-columns: 1fr; padding: 0 24px; }
+            .financing-img { height: 260px; order: -1; }
+            .financing-img-group { height: auto; flex-direction: row; order: -1; }
+            .newsletter-inner { padding: 0 24px; }
+            .newsletter-form { flex-direction: column; }
+            .footer-inner { grid-template-columns: 1fr; padding: 0 24px; }
+            .footer-bottom { padding: 20px 24px 0; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 28px; }
+            .hero-subtitle { font-size: 14px; }
+            .trust-inner { grid-template-columns: 1fr; }
+            .about-icons { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr 1fr; }
+            .product-categories { gap: 10px; }
+            .category-tab { padding: 10px 18px; font-size: 10px; }
+            .founders-grid { grid-template-columns: 1fr; gap: 40px; }
+            .founder-image { width: 180px; height: 180px; }
+            .founder-card h3 { font-size: 22px; }
+            .financing-img-group { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div>
+        <div class="top-bar-phone">
+            <span>📞</span>
+            <a href="tel:+919830000000">+91 98300 00000</a>
+        </div>
+        <div class="top-bar-logo">
+            <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1783059499/EEPRON_LOGO.JPG_js6iok.jpg" alt="EEPRON Plywood Logo">
+        </div>
+        <button class="cta-button" style="padding:12px 30px;font-size:12px;letter-spacing:1px;">GET FREE QUOTE</button>
+        <button class="ham-menu" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+    <div class="nav-wrapper">
+        <nav>
+            <ul>
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#about">ABOUT US</a></li>
+                <li><a href="#products">PRODUCTS</a></li>
+                <li><a href="#gallery">GALLERY</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+    <a href="#home" onclick="toggleMenu()">HOME</a>
+    <a href="#about" onclick="toggleMenu()">ABOUT US</a>
+    <a href="#products" onclick="toggleMenu()">PRODUCTS</a>
+    <a href="#gallery" onclick="toggleMenu()">GALLERY</a>
+    <a href="#contact" onclick="toggleMenu()">CONTACT</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-video-background">
+        <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;">
+            <source src="https://res.cloudinary.com/dara80vtx/video/upload/v1783059480/0702_1_2_uzmgbv.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content-left">
+        <h1>PREMIUM CALIBRATED<br><span>PLYWOOD FOR INDIA</span></h1>
+        <p class="hero-subtitle">Full calibrated waterproof &amp; non-waterproof plywood manufactured in Kolkata  <br>Delivered direct to your godown — straight from the factory.</p>
+        <div class="hero-cta-section-left">
+            <button class="cta-button">GET A QUOTE</button>
+            <div class="hero-reviews-left">
+                <div class="review-number-left">2 units</div>
+                <div class="review-label-left">Kolkata</div>
+            </div>
+        </div>
+    </div>
+    <!-- TICKER -->
+    <div class="hero-ticker">
+        <div class="hero-ticker-track">
+            <!-- First set -->
+            <span class="ticker-item">Immune to Microbes <span class="ticker-dot"></span></span>
+            <span class="ticker-item">Water Proof <span class="ticker-dot"></span></span>
+            <span class="ticker-item">Termite Proof <span class="ticker-dot"></span></span>
+            <span class="ticker-item">Immune to Microbes <span class="ticker-dot"></span></span>
+            <span class="ticker-item">Water Proof <span class="ticker-dot"></span></span>
+            <span class="ticker-item">Termite Proof <span class="ticker-dot"></span></span>
+            <span class="ticker-item">Full Calibrated Boards <span class="ticker-dot"></span></span>
+            <span class="ticker-item">Factory Direct Supply <span class="ticker-dot"></span></span>
+            <span class="ticker-item">Immune to Microbes <span class="ticker-dot"></span></span>
+            <span class="ticker-item">Water Proof <span class="ticker-dot"></span></span>
+            <span class="ticker-item">Termite Proof <span class="ticker-dot"></span></span>
+            <!-- Duplicate for seamless loop -->
+            <span class="ticker-item">Immune to Microbes <span class="ticker-dot"></span></span>
+            <span class="ticker-item">Water Proof <span class="ticker-dot"></span></span>
+            <span class="ticker-item">Termite Proof <span class="ticker-dot"></span></span>
+            <span class="ticker-item">Immune to Microbes <span class="ticker-dot"></span></span>
+            <span class="ticker-item">Water Proof <span class="ticker-dot"></span></span>
+            <span class="ticker-item">Termite Proof <span class="ticker-dot"></span></span>
+            <span class="ticker-item">Full Calibrated Boards <span class="ticker-dot"></span></span>
+            <span class="ticker-item">Factory Direct Supply <span class="ticker-dot"></span></span>
+            <span class="ticker-item">Immune to Microbes <span class="ticker-dot"></span></span>
+            <span class="ticker-item">Water Proof <span class="ticker-dot"></span></span>
+            <span class="ticker-item">Termite Proof <span class="ticker-dot"></span></span>
+        </div>
+    </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust-section">
+    <div class="trust-inner">
+        <div class="trust-item">
+            <h3>FACTORY DIRECT</h3>
+            <p>No middlemen — buy straight from our manufacturing units at factory prices</p>
+        </div>
+        <div class="trust-item">
+            <h3>GODOWN DELIVERY</h3>
+            <p>Bulk consignments delivered direct to your godown across India</p>
+        </div>
+        <div class="trust-item">
+            <h3>FULL CALIBRATION</h3>
+            <p>Every sheet calibrated for uniform thickness and a flawless finish</p>
+        </div>
+        <div class="trust-item">
+            <h3>CUSTOM BRANDING</h3>
+            <p>Private labelling and custom branding available for dealers &amp; distributors</p>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-eepron-section" id="about">
+    <div class="about-left">
+        <div class="about-eyebrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+            ABOUT US
+        </div>
+        <h2>EEPRON PLYWOOD — A UNITED ENTERPRISES BRAND</h2>
+        <p>EEPRON Plywood is a premium plywood manufacturing brand under United Enterprises, committed to delivering superior quality wood panel solutions across India. With state-of-the-art manufacturing units in Kolkata and Lucknow, we produce full calibrated waterproof and non-waterproof plywood that's built to perform.</p>
+        <button class="cta-button" style="background:var(--accent-cream);color:var(--text-dark);align-self:flex-start;padding:15px 40px;">FIND OUT MORE</button>
+    </div>
+    <div class="about-icons" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782285955/66492864-d8fd-4ed8-90c4-14261e2c95be_1_sbhphv.jpg');">
+        <div class="icon-block">
+            <div class="icon-box">
+                <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#8a5a2e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+            </div>
+            <h3>TWO MANUFACTURING UNITS</h3>
+            <p>State-of-the-art plywood factories in Kolkata &amp; Lucknow.</p>
+        </div>
+        <div class="icon-block">
+            <div class="icon-box">
+                <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#8a5a2e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+                </svg>
+            </div>
+            <h3>FULL CALIBRATED BOARDS</h3>
+            <p>Precision calibration for uniform thickness sheet to sheet.</p>
+        </div>
+        <div class="icon-block">
+            <div class="icon-box">
+                <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#8a5a2e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>
+                </svg>
+            </div>
+            <h3>WATERPROOF &amp; BWP GRADE</h3>
+            <p>Boiling waterproof boards built for kitchens, bathrooms &amp; humid zones.</p>
+        </div>
+        <div class="icon-block">
+            <div class="icon-box">
+                <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#8a5a2e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
+                </svg>
+            </div>
+            <h3>CUSTOM BRANDING</h3>
+            <p>Private label &amp; custom branding available for dealers and distributors.</p>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="products">
+    <div class="container">
+        <div class="services-header">
+            <h2>OUR PLYWOOD PRODUCT RANGE</h2>
+        </div>
+
+        <div class="product-categories">
+            <div class="category-tab active" onclick="filterProducts('marine')">EEPRON MARINE</div>
+            <div class="category-tab" onclick="filterProducts('club')">EEPRON CLUB</div>
+            <div class="category-tab" onclick="filterProducts('star')">EEPRON STAR</div>
+            <div class="category-tab" onclick="filterProducts('segments')">CUSTOMIZED PLYWOOD</div>
+            <div class="category-tab" onclick="filterProducts('shuttering')">SHUTTERING PLYWOOD</div>
+        </div>
+
+        <!-- EEPRON MARINE -->
+        <div class="services-grid" id="marine-products">
+            <div class="service-card">
+                <div class="service-card-image" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286096/6517177d-b8f1-46cc-ba70-93774aee14e7_1_gsmj4z.jpg');"></div>
+                <div class="service-card-body">
+                    <div class="service-card-number">PREMIUM MARINE</div>
+                    <h3>EEPRON MARINE</h3>
+                    <p>Premium waterproof marine-grade plywood engineered for kitchens, bathrooms &amp; high-moisture areas</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-image" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286095/f79b8a63-76ed-4bd7-97c9-6f7dd6de989d_fxxfhu.jpg');"></div>
+                <div class="service-card-body">
+                    <div class="service-card-number">MARINE VARIANT</div>
+                    <h3>BWP WATERPROOF</h3>
+                    <p>Boiling waterproof boards with superior bonding strength &amp; moisture resistance</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-image" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286096/0289e158-905e-4ea4-8fc4-2782ba8068c0_w25b48.jpg');"></div>
+                <div class="service-card-body">
+                    <div class="service-card-number">CALIBRATED</div>
+                    <h3>FULL CALIBRATED MARINE</h3>
+                    <p>Machine-calibrated for consistent thickness &amp; flawless finish</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- EEPRON CLUB -->
+        <div class="services-grid" id="club-products" style="display:none;">
+            <div class="service-card">
+                <div class="service-card-image" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286095/90de738c-3b21-49cf-b1a2-dc0a96fc43a4_ix1xsg.jpg');"></div>
+                <div class="service-card-body">
+                    <div class="service-card-number">PREMIUM CLUB</div>
+                    <h3>EEPRON CLUB</h3>
+                    <p>Commercial-grade plywood for furniture manufacturing &amp; interior applications</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-image" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286096/6517177d-b8f1-46cc-ba70-93774aee14e7_lxwhho.jpg');"></div>
+                <div class="service-card-body">
+                    <div class="service-card-number">CLUB VARIANT</div>
+                    <h3>MULTI-LAYERED CORE</h3>
+                    <p>Strong composite core boards ideal for cabinetry &amp; shelving</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-image" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286095/bf1402aa-2c66-4bde-bc1f-921a0d24601e_yr2h7w.jpg');"></div>
+                <div class="service-card-body">
+                    <div class="service-card-number">CALIBRATED</div>
+                    <h3>FULL CALIBRATED CLUB</h3>
+                    <p>Precision calibration for uniform thickness &amp; smooth surface finish</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- EEPRON STAR -->
+        <div class="services-grid" id="star-products" style="display:none;">
+            <div class="service-card">
+                <div class="service-card-image" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286095/c96fe1ff-85dc-4a90-b70f-465ebe2c907c_1_gztszv.jpg');"></div>
+                <div class="service-card-body">
+                    <div class="service-card-number">ECONOMY GRADE</div>
+                    <h3>EEPRON STAR</h3>
+                    <p>Cost-effective plywood for interior partitions &amp; non-critical applications</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-image" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286095/c96fe1ff-85dc-4a90-b70f-465ebe2c907c_plgzj5.jpg');"></div>
+                <div class="service-card-body">
+                    <div class="service-card-number">STAR VARIANT</div>
+                    <h3>COMMERCIAL PLYWOOD</h3>
+                    <p>Lightweight boards for commercial construction &amp; budget projects</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-image" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286096/6517177d-b8f1-46cc-ba70-93774aee14e7_1_gsmj4z.jpg');"></div>
+                <div class="service-card-body">
+                    <div class="service-card-number">CALIBRATED</div>
+                    <h3>FULL CALIBRATED STAR</h3>
+                    <p>Calibrated star-grade boards for consistent dimensions</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CUSTOMIZED SEGMENTS -->
+        <div class="services-grid" id="segments-products" style="display:none;">
+            <div class="service-card">
+                <div class="service-card-image" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286096/6517177d-b8f1-46cc-ba70-93774aee14e7_1_gsmj4z.jpg');"></div>
+                <div class="service-card-body">
+                    <div class="service-card-number">SEGMENT 1</div>
+                    <h3>RED CORE PF</h3>
+                    <p>Premium grade with red core phenol formaldehyde for superior durability</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-image" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286095/f79b8a63-76ed-4bd7-97c9-6f7dd6de989d_fxxfhu.jpg');"></div>
+                <div class="service-card-body">
+                    <div class="service-card-number">SEGMENT 2</div>
+                    <h3>ALTERNATE</h3>
+                    <p>Alternating veneer construction for strength &amp; flexibility</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-image" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286096/0289e158-905e-4ea4-8fc4-2782ba8068c0_w25b48.jpg');"></div>
+                <div class="service-card-body">
+                    <div class="service-card-number">SEGMENT 3</div>
+                    <h3>SEMI ALTERNATE</h3>
+                    <p>Semi-alternating construction balancing cost &amp; performance</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-image" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286095/90de738c-3b21-49cf-b1a2-dc0a96fc43a4_ix1xsg.jpg');"></div>
+                <div class="service-card-body">
+                    <div class="service-card-number">SEGMENT 4</div>
+                    <h3>SUPER MR</h3>
+                    <p>Super moisture resistant boards for humid &amp; coastal applications</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-image" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286096/6517177d-b8f1-46cc-ba70-93774aee14e7_lxwhho.jpg');"></div>
+                <div class="service-card-body">
+                    <div class="service-card-number">SEGMENT 5</div>
+                    <h3>NEW ZEALAND PINE BLOCK</h3>
+                    <p>Premium block board with New Zealand pine core for lightweight strength</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-image" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286095/bf1402aa-2c66-4bde-bc1f-921a0d24601e_yr2h7w.jpg');"></div>
+                <div class="service-card-body">
+                    <div class="service-card-number">CUSTOM GRADE</div>
+                    <h3>TAILORED SOLUTIONS</h3>
+                    <p>Custom specifications available for large bulk orders &amp; projects</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SHUTTERING PLYWOOD -->
+        <div class="services-grid" id="shuttering-products" style="display:none;">
+            <div class="service-card">
+                <div class="service-card-image" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286095/c96fe1ff-85dc-4a90-b70f-465ebe2c907c_1_gztszv.jpg');"></div>
+                <div class="service-card-body">
+                    <div class="service-card-number">RED FILM FACED</div>
+                    <h3>RED FILM FACED SHUTTERING</h3>
+                    <p>Red phenolic film-faced plywood for concrete shuttering &amp; form work</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-image" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286095/c96fe1ff-85dc-4a90-b70f-465ebe2c907c_plgzj5.jpg');"></div>
+                <div class="service-card-body">
+                    <div class="service-card-number">BLACK FILM FACED</div>
+                    <h3>BLACK FILM FACED SHUTTERING</h3>
+                    <p>Black phenolic film-faced boards for heavy-duty construction projects</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-image" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286096/6517177d-b8f1-46cc-ba70-93774aee14e7_1_gsmj4z.jpg');"></div>
+                <div class="service-card-body">
+                    <div class="service-card-number">SHUTTERING PRO</div>
+                    <h3>PREMIUM SHUTTERING</h3>
+                    <p>High-reuse shuttering plywood with superior durability &amp; finish</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align:center;margin-top:40px;">
+            <button class="cta-button">REQUEST CUSTOM QUOTE</button>
+        </div>
+    </div>
+</section>
+
+<!-- GALLERY SECTION -->
+<section class="gallery-section" id="gallery">
+    <div class="container">
+        <h2>OUR WORK &amp; FACTORY</h2>
+        <p class="gallery-subtitle">A glimpse inside our manufacturing units and the products we deliver across India</p>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div class="gallery-item-inner" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286770/9a1c3d87-7142-4ea8-acf5-e81c748898c9_hevlxz.jpg');"></div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-item-inner" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286769/650ab6a6-e818-4d3b-8dda-936049ca41de_csyqt9.jpg');"></div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-item-inner" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286768/02da8045-476d-49d1-aa1a-ddb63fa4631a_wi6a2y.jpg');"></div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-item-inner" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286767/ec71429b-3aa4-41f0-8e2a-8bfeef590066_mmdxw9.jpg');"></div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-item-inner" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286767/41f98deb-4789-4945-8ac0-d9bc1336adf2_qfab5j.jpg');"></div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-item-inner" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286767/39d35604-0440-4baa-99d1-4f260ca4998d_syvqbj.jpg');"></div>
+            </div>
+            <div class="gallery-item video-item" onclick="openVideoModal('https://res.cloudinary.com/dey4zikfh/video/upload/v1782982871/0702_1_1_uznyxr.mp4')">
+                <div class="gallery-item-inner" style="background-image:url('https://res.cloudinary.com/dey4zikfh/video/upload/v1782982871/0702_1_1_uznyxr.jpg');"></div>
+                <div class="gallery-item-overlay">
+                    <span class="gallery-play-icon">▶</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- VIDEO LIGHTBOX -->
+<div class="video-lightbox" id="videoLightbox">
+    <div class="video-lightbox-content">
+        <button class="video-lightbox-close" onclick="closeVideoModal()">✕</button>
+        <video id="videoLightboxPlayer" controls playsinline></video>
+    </div>
+</div>
+
+<!-- CERTIFICATIONS -->
+<section class="certifications-section">
+    <div class="certifications-inner">
+        <div class="certification-item">
+            <h3>FACTORY CERTIFIED</h3>
+            <p>Manufactured in our own ISO-9001:2015 compliant units in Kolkata &amp; Lucknow under strict quality control</p>
+            <div class="iso-badge">ISO 9001:2015 CERTIFIED</div>
+        </div>
+        <div class="certification-item">
+            <h3>QUALITY TESTED</h3>
+            <p>Every batch tested for bonding strength, moisture resistance &amp; calibrated thickness</p>
+        </div>
+        <div class="certification-item">
+            <h3>PAN-INDIA SUPPLY</h3>
+            <p>Reliable bulk supply chain delivering direct to godowns across India</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+    <div class="container">
+        <div class="testimonials-header">
+            <div class="testimonials-eyebrow">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M3 3h6v6H3zM15 3h6v6h-6zM3 15h6v6H3zM15 15h6v6h-6z"/>
+                </svg>
+                CLIENT TESTIMONIALS
+            </div>
+            <h2>CLIENTS LOVE OUR QUALITY<br>&amp; FACTORY-DIRECT SUPPLY</h2>
+            <p class="testimonials-sub">Trusted by furniture manufacturers, plywood dealers and distributors across India for consistent calibration and on-time godown delivery.</p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">EEPRON's calibrated plywood is consistently flat and uniform — our furniture units have cut down on rejection rates significantly. The quality and thickness consistency is something we haven't found elsewhere.</p>
+                <div class="testimonial-author-row">
+                    <div class="testimonial-avatar" style="background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop');"></div>
+                    <div class="testimonial-author">
+                        Rajeev Sharma
+                        <span>Furniture Manufacturer, Lucknow</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">Factory-direct pricing and on-time godown delivery have made EEPRON our go-to supplier for BWP plywood. The process from order to delivery is smooth, transparent and reliable every single time.</p>
+                <div class="testimonial-author-row">
+                    <div class="testimonial-avatar" style="background-image:url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&h=120&fit=crop');"></div>
+                    <div class="testimonial-author">
+                        Subrata Das
+                        <span>Plywood Dealer, Kolkata</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BULK ORDERS -->
+<section class="financing-section" id="orders">
+    <div class="financing-inner">
+        <div>
+            <h2>BULK ORDERS &amp; DEALER PARTNERSHIPS</h2>
+            <p>We work directly with dealers, distributors, furniture manufacturers &amp; construction companies across India to supply premium calibrated plywood at factory-direct rates.</p>
+            <ul class="financing-list">
+                <li><span>→</span> Competitive factory-direct pricing on bulk orders</li>
+                <li><span>→</span> Direct delivery to your godown, anywhere in India</li>
+                <li><span>→</span> Custom branding &amp; private labelling for dealers</li>
+                <li><span>→</span> Dedicated support from order to delivery</li>
+            </ul>
+            <button class="cta-button" style="margin-top:10px;">REQUEST BULK QUOTE</button>
+        </div>
+        <div class="financing-img-group">
+            <div class="financing-img" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782285955/66492864-d8fd-4ed8-90c4-14261e2c95be_1_sbhphv.jpg');"></div>
+            <div class="financing-img" style="background-image:url('https://res.cloudinary.com/dey4zikfh/image/upload/v1782985033/b0cf8a20-7355-4e60-ae32-33cd20a217fe_zfbrol.jpg');"></div>
+        </div>
+    </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter-section">
+    <div class="newsletter-inner">
+        <h2>STAY UPDATED WITH EEPRON PLYWOOD</h2>
+        <p>Subscribe for new product launches, dealer offers &amp; factory updates</p>
+        <div class="newsletter-form">
+            <input type="email" placeholder="Enter your email address">
+            <button type="submit">SUBSCRIBE</button>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+    <div class="footer-inner">
+        <div class="footer-section">
+            <h3>EEPRON PLYWOOD</h3>
+            <p>A premium plywood manufacturing brand under United Enterprises, with factories in Kolkata &amp; Lucknow delivering full calibrated waterproof &amp; non-waterproof plywood across India.</p>
+        </div>
+        <div class="footer-section">
+            <h3>QUICK LINKS</h3>
+            <ul>
+                <li><a href="#products">Our Products</a></li>
+                <li><a href="#orders">Bulk Orders</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>CONTACT INFO</h3>
+            <ul>
+                <li>EEPRON Plywood — United Enterprises</li>
+                <li>Street No. 194, CE Block (Newtown), Action Area I, Kolkata, West Bengal</li>
+                <li><a href="mailto:sales@eepronplywood.com">📧 sales@eepronplywood.com</a></li>
+                <li><a href="tel:+919830000000">📞 +91 98300 00000</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>BUSINESS HOURS</h3>
+            <ul>
+                <li>Mon – Sat: 09:00 am – 05:00 pm</li>
+                <li>Sunday: Closed</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>EEPRON PLYWOOD — UNITED ENTERPRISES | sales@eepronplywood.com</p>
+        <p style="margin-top:8px;">Copyright &copy; 2026 EEPRON PLYWOOD - All Rights Reserved.</p>
+    </div>
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/919830000000" class="whatsapp-float" target="_blank" aria-label="Message us on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-1.732-.866-2.867-1.546-4.006-3.506-.302-.522.302-.484.864-1.612.095-.197.047-.371-.05-.52-.099-.149-.669-1.612-.916-2.207-.242-.578-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.05 3.13 4.974 4.26 2.926 1.131 2.926.755 3.45.71.526-.043 1.69-.69 1.93-1.36.235-.668.235-1.24.165-1.358-.07-.118-.272-.198-.57-.347zM12 2c5.523 0 10 4.477 10 10 0 5.523-4.477 10-10 10-1.79 0-3.466-.469-4.92-1.286l-5.08 1.286 1.285-5.08C2.469 15.466 2 13.79 2 12 2 6.477 6.477 2 12 2zm0 1.8c-4.529 0-8.2 3.671-8.2 8.2 0 1.633.477 3.155 1.301 4.434l.21.33-.708 2.797 2.797-.708.33.21A8.2 8.2 0 1 0 12 3.8z"/></svg>
+</a>
+
+<script>
+function toggleMenu() {
+    const mobileNav = document.getElementById('mobileNav');
+    const hamMenu = document.querySelector('.ham-menu');
+    mobileNav.classList.toggle('active');
+    hamMenu.classList.toggle('active');
+}
+
+function filterProducts(category) {
+    document.getElementById('marine-products').style.display = 'none';
+    document.getElementById('club-products').style.display = 'none';
+    document.getElementById('star-products').style.display = 'none';
+    document.getElementById('segments-products').style.display = 'none';
+    document.getElementById('shuttering-products').style.display = 'none';
+
+    document.querySelectorAll('.category-tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+
+    if (category === 'marine') {
+        document.getElementById('marine-products').style.display = 'grid';
+        document.querySelectorAll('.category-tab')[0].classList.add('active');
+    } else if (category === 'club') {
+        document.getElementById('club-products').style.display = 'grid';
+        document.querySelectorAll('.category-tab')[1].classList.add('active');
+    } else if (category === 'star') {
+        document.getElementById('star-products').style.display = 'grid';
+        document.querySelectorAll('.category-tab')[2].classList.add('active');
+    } else if (category === 'segments') {
+        document.getElementById('segments-products').style.display = 'grid';
+        document.querySelectorAll('.category-tab')[3].classList.add('active');
+    } else if (category === 'shuttering') {
+        document.getElementById('shuttering-products').style.display = 'grid';
+        document.querySelectorAll('.category-tab')[4].classList.add('active');
+    }
+}
+
+function openVideoModal(src) {
+    const modal = document.getElementById('videoLightbox');
+    const player = document.getElementById('videoLightboxPlayer');
+    player.src = src;
+    player.load();
+    player.play();
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeVideoModal() {
+    const modal = document.getElementById('videoLightbox');
+    const player = document.getElementById('videoLightboxPlayer');
+    player.pause();
+    player.src = '';
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        const modal = document.getElementById('videoLightbox');
+        if (modal.classList.contains('active')) {
+            closeVideoModal();
+        }
+    }
+});
+</script>
+
+</body>
+</html>
