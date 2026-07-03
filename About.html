@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us — EEPRON Plywood | A United Enterprises Brand</title>
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Saira Condensed', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+
+        :root {
+            --primary-dark: #4a2e1a;
+            --primary-light: #8a5a2e;
+            --accent-cream: #f5ede0;
+            --accent-gold: #d99c2b;
+            --text-dark: #2a1f15;
+            --container-max: 1200px;
+        }
+
+        /* ── CONTAINER ── */
+        .container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 80px;
+        }
+        @media (max-width: 900px) { .container { padding: 0 32px; } }
+        @media (max-width: 480px) { .container { padding: 0 20px; } }
+
+        /* ── HEADER ── */
+        header {
+            background: var(--primary-dark);
+            position: static;
+            width: 100%;
+        }
+        header > div:first-child {
+            background: transparent;
+            padding: 20px 80px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+        .top-bar-phone {
+            color: #fff;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .top-bar-phone span { font-size: 20px; }
+        .top-bar-phone a { color: #fff; text-decoration: none; font-weight: 700; letter-spacing: 0.5px; }
+        .top-bar-logo { text-align: center; flex: 1; display: flex; justify-content: center; align-items: center; }
+        .top-bar-logo img { height: 100px; display: block; }
+        .nav-wrapper { margin: 0 80px; border: 1px solid rgba(255,255,255,0.2); display: flex; }
+        nav { width: 100%; }
+        nav ul { display: flex; list-style: none; gap: 0; margin: 0; }
+        nav li { flex: 1; text-align: center; border-right: 1px solid rgba(255,255,255,0.15); }
+        nav li:last-child { border-right: none; }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            transition: color 0.3s;
+            display: block;
+            font-weight: 700;
+            padding: 18px 10px;
+        }
+        nav a:hover, nav a.active { color: var(--accent-gold); background: rgba(217,156,43,0.1); }
+        .cta-button {
+            background: var(--accent-gold);
+            color: white;
+            padding: 12px 35px;
+            border: none;
+            font-size: 13px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            font-family: 'Saira Condensed', sans-serif;
+            font-weight: 700;
+        }
+        .cta-button:hover { background: #b87f1f; }
+
+        /* ── HAMBURGER MENU ── */
+        .ham-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 10px;
+            z-index: 1001;
+        }
+        .ham-menu span {
+            width: 25px;
+            height: 2.5px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .ham-menu.active span:nth-child(1) { transform: rotate(45deg) translateY(10px); }
+        .ham-menu.active span:nth-child(2) { opacity: 0; }
+        .ham-menu.active span:nth-child(3) { transform: rotate(-45deg) translateY(-10px); }
+
+        /* ── MOBILE NAV ── */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .mobile-nav.active { display: flex; }
+        .mobile-nav a {
+            color: #fff;
+            font-size: 24px;
+            text-decoration: none;
+            margin: 20px 0;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .mobile-nav a:hover { color: var(--accent-gold); }
+
+        /* ── HERO BANNER ── */
+        .hero-about {
+            min-height: 50vh;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+            padding: 70px 80px 90px;
+        }
+        .hero-about-inner { max-width: 760px; }
+        .hero-about-eyebrow {
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: var(--accent-gold);
+            font-weight: 700;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+        .hero-about h1 {
+            font-size: 62px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+        .hero-about p {
+            font-size: 17px;
+            max-width: 620px;
+            margin: 0 auto;
+            opacity: 0.92;
+            line-height: 1.8;
+        }
+
+        /* ── TRUST / STATS SECTION ── */
+        .trust-section { background: var(--primary-dark); color: #fff; }
+        .trust-inner {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 50px 80px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        .trust-item { text-align: center; }
+        .trust-item h3 { font-size: 14px; margin-bottom: 10px; letter-spacing: 1px; }
+        .trust-item p { font-size: 12px; line-height: 1.8; opacity: 0.9; }
+
+        /* ── STORY / ABOUT SECTION ── */
+        .about-eepron-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 600px;
+        }
+        .about-left {
+            background: var(--primary-light);
+            padding: 60px 80px;
+            display: flex; flex-direction: column; justify-content: center; color: #fff;
+        }
+        .about-eyebrow { font-size: 12px; letter-spacing: 2px; margin-bottom: 20px; opacity: 0.9; display: flex; align-items: center; gap: 8px; }
+        .about-left h2 { font-size: 40px; font-weight: 900; line-height: 1.15; margin-bottom: 30px; text-transform: uppercase; }
+        .about-left p { font-size: 15px; line-height: 1.8; margin-bottom: 24px; opacity: 0.95; }
+        .about-icons {
+            background: var(--accent-cream);
+            padding: 60px 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-content: center;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .about-icons::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(245, 237, 224, 0.92);
+            z-index: 1;
+        }
+        .icon-block { text-align: center; position: relative; z-index: 2; }
+        .icon-box {
+            width: 100px; height: 100px; background: #f5f5f5;
+            border-radius: 15px; display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px; border: 3px solid #e0e0e0;
+        }
+        .icon-block h3 { font-size: 15px; font-weight: 900; margin-bottom: 12px; text-transform: uppercase; color: var(--text-dark); }
+        .icon-block p { font-size: 13px; line-height: 1.6; color: #666; }
+
+        /* ── MISSION / VISION ── */
+        .mission-section { padding: 90px 0; background: #fff; }
+        .mission-header { text-align: center; margin-bottom: 60px; }
+        .mission-eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 11px; font-weight: 700; letter-spacing: 3px;
+            color: var(--accent-gold); margin-bottom: 18px; text-transform: uppercase;
+        }
+        .mission-header h2 {
+            font-size: 44px; font-weight: 900; color: var(--text-dark);
+            letter-spacing: 1px; text-transform: uppercase; line-height: 1.1;
+        }
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        .mission-card {
+            background: var(--accent-cream);
+            padding: 44px 36px;
+            border-radius: 6px;
+            border-top: 4px solid var(--accent-gold);
+        }
+        .mission-card-number {
+            font-size: 12px; letter-spacing: 3px; color: var(--accent-gold);
+            font-weight: 700; margin-bottom: 16px;
+        }
+        .mission-card h3 {
+            font-size: 22px; font-weight: 900; color: var(--text-dark);
+            text-transform: uppercase; margin-bottom: 14px; letter-spacing: 0.5px;
+        }
+        .mission-card p { font-size: 14px; color: #666; line-height: 1.8; }
+
+        /* ── JOURNEY / TIMELINE ── */
+        .journey-section { background: #1a1007; padding: 100px 0; }
+        .journey-header { text-align: center; margin-bottom: 70px; }
+        .journey-eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 11px; font-weight: 700; letter-spacing: 3px;
+            color: var(--accent-gold); margin-bottom: 18px; text-transform: uppercase;
+        }
+        .journey-header h2 {
+            font-size: 46px; font-weight: 900; color: #fff;
+            letter-spacing: 1px; text-transform: uppercase; line-height: 1.1;
+        }
+        .journey-timeline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+        }
+        .journey-item {
+            background: #231508;
+            padding: 40px 30px;
+            border-top: 3px solid var(--accent-gold);
+        }
+        .journey-year {
+            font-size: 32px; font-weight: 900; color: var(--accent-gold);
+            margin-bottom: 14px;
+        }
+        .journey-item h3 {
+            font-size: 16px; font-weight: 800; color: #fff;
+            text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.5px;
+        }
+        .journey-item p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+
+        /* ── FOUNDERS SECTION ── */
+        .founders-section { padding: 90px 0; background: #fff; }
+        .founders-header { text-align: center; margin-bottom: 70px; }
+        .founders-eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 12px; font-weight: 700; letter-spacing: 2px;
+            color: var(--accent-gold); margin-bottom: 18px; text-transform: uppercase;
+        }
+        .founders-section h2 {
+            font-size: 46px; font-weight: 900; color: var(--text-dark);
+            letter-spacing: 1px; text-transform: uppercase; line-height: 1.1; margin-bottom: 14px;
+        }
+        .founders-sub { font-size: 15px; color: #666; max-width: 620px; margin: 0 auto; line-height: 1.7; }
+        .founders-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+            max-width: 1000px;
+            margin: 70px auto 0;
+        }
+        .founder-card { text-align: center; display: flex; flex-direction: column; align-items: center; }
+        .founder-image {
+            width: 280px; height: 280px; border-radius: 50%;
+            background-size: cover; background-position: center;
+            margin-bottom: 30px; border: 4px solid var(--accent-gold);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        .founder-card h3 {
+            font-size: 28px; font-weight: 900; color: var(--text-dark);
+            letter-spacing: 0.5px; margin-bottom: 8px; text-transform: uppercase;
+        }
+        .founder-title {
+            font-size: 16px; color: var(--accent-gold); letter-spacing: 1.5px;
+            font-weight: 700; text-transform: uppercase; margin-bottom: 20px;
+        }
+        .founder-bio { font-size: 14px; color: #666; line-height: 1.8; max-width: 320px; }
+
+        /* ── CERTIFICATIONS ── */
+        .certifications-section { background: var(--primary-dark); color: #fff; padding: 60px 0; margin: 0; }
+        .certifications-inner {
+            max-width: var(--container-max); margin: 0 auto; padding: 0 80px;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
+        }
+        .certification-item { text-align: center; }
+        .certification-item h3 { font-size: 16px; margin-bottom: 15px; letter-spacing: 1px; }
+        .certification-item p { font-size: 13px; line-height: 1.8; opacity: 0.9; }
+        .iso-badge {
+            display: inline-block; background: var(--accent-gold); color: #fff;
+            padding: 15px 25px; border-radius: 4px; font-weight: 900;
+            font-size: 14px; letter-spacing: 1px; margin-top: 15px;
+        }
+
+        /* ── TESTIMONIALS ── */
+        .testimonials-section { padding: 90px 0; background: #ece8e1; }
+        .testimonials-header { text-align: center; margin-bottom: 60px; }
+        .testimonials-eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 12px; font-weight: 700; letter-spacing: 2px;
+            color: var(--accent-gold); margin-bottom: 18px; text-transform: uppercase;
+        }
+        .testimonials-section h2 {
+            font-size: 46px; font-weight: 900; color: var(--text-dark);
+            letter-spacing: 1px; text-transform: uppercase; line-height: 1.1; margin-bottom: 14px;
+        }
+        .testimonials-sub { font-size: 15px; color: #666; line-height: 1.7; max-width: 620px; margin: 0 auto; }
+        .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .testimonial-card { background: transparent; padding: 0 0 0 28px; border-left: 3px solid #c8b99a; }
+        .testimonial-text { font-size: 15px; color: #444; margin-bottom: 28px; line-height: 1.85; }
+        .testimonial-author-row { display: flex; align-items: center; gap: 14px; }
+        .testimonial-avatar {
+            width: 58px; height: 58px; border-radius: 50%; flex-shrink: 0;
+            background-size: cover; background-position: center; border: 2px solid #d0bfa8;
+        }
+        .testimonial-author { font-weight: 800; color: var(--text-dark); font-size: 16px; }
+        .testimonial-author span { display: block; font-size: 13px; color: #888; margin-top: 2px; }
+
+        /* ── NEWSLETTER ── */
+        .newsletter-section { background: var(--primary-dark); color: #fff; padding: 60px 0; }
+        .newsletter-inner { max-width: 700px; margin: 0 auto; text-align: center; padding: 0 80px; }
+        .newsletter-inner h2 { font-size: 32px; margin-bottom: 20px; }
+        .newsletter-inner p { font-size: 14px; margin-bottom: 30px; opacity: 0.9; }
+        .newsletter-form { display: flex; gap: 10px; }
+        .newsletter-form input { flex: 1; padding: 12px 15px; border: none; font-size: 13px; font-family: 'Saira Condensed', sans-serif; }
+        .newsletter-form button {
+            background: var(--accent-gold); color: white; border: none;
+            padding: 12px 30px; font-size: 13px; cursor: pointer;
+            font-family: 'Saira Condensed', sans-serif; font-weight: 700;
+        }
+        .newsletter-form button:hover { background: #b87f1f; }
+
+        /* ── FOOTER ── */
+        footer { background: #2e1c10; color: #ddd; padding: 60px 0 30px; }
+        .footer-inner {
+            max-width: var(--container-max); margin: 0 auto; padding: 0 80px;
+            display: grid; grid-template-columns: 2fr 1fr 2fr 1fr; gap: 40px; margin-bottom: 40px;
+        }
+        .footer-section h3 { color: #fff; margin-bottom: 15px; font-size: 14px; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 10px; font-size: 13px; }
+        .footer-section a { color: #ddd; text-decoration: none; transition: color 0.3s; }
+        .footer-section a:hover { color: var(--accent-gold); }
+        .footer-section p { font-size: 13px; line-height: 1.8; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding: 20px 80px 0; text-align: center; font-size: 12px; color: #999; max-width: var(--container-max); margin: 0 auto; }
+
+        /* ── WHATSAPP ── */
+        .whatsapp-float {
+            position: fixed; bottom: 25px; right: 25px; z-index: 200;
+            background: #25D366; width: 58px; height: 58px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3); text-decoration: none; transition: transform 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.08); }
+        .whatsapp-float svg { width: 30px; height: 30px; fill: #fff; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            :root { --container-max: 900px; }
+            .container { padding: 0 40px; }
+            header > div:first-child { padding: 20px 40px; }
+            .nav-wrapper { margin: 0 40px; }
+            .trust-inner { padding: 50px 40px; grid-template-columns: repeat(2, 1fr); }
+            .about-left { padding: 60px 40px; }
+            .about-icons { padding: 60px 30px; }
+            .mission-grid { grid-template-columns: repeat(2, 1fr); }
+            .journey-timeline { grid-template-columns: repeat(2, 1fr); }
+            .certifications-inner { padding: 0 40px; }
+            .newsletter-inner { padding: 0 40px; }
+            .footer-inner { padding: 0 40px; grid-template-columns: 1fr 1fr; gap: 30px; }
+            .footer-bottom { padding: 20px 40px 0; }
+        }
+
+        @media (max-width: 768px) {
+            header > div:first-child {
+                padding: 15px 20px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .nav-wrapper { display: none; width: 100%; margin: 0; border: none; order: 3; }
+            .top-bar-logo { flex: 0; }
+            .top-bar-logo img { height: 55px; }
+            .top-bar-phone { font-size: 14px; }
+            .top-bar-phone a { font-size: 14px; }
+            .cta-button { display: none; }
+            .ham-menu { display: flex; }
+            .hero-about { padding: 40px 24px 60px; min-height: auto; }
+            .hero-about h1 { font-size: 36px; }
+            .hero-about p { font-size: 15px; }
+            .trust-inner { grid-template-columns: 1fr 1fr; padding: 40px 24px; gap: 24px; }
+            .about-eepron-section { grid-template-columns: 1fr; }
+            .about-left { padding: 50px 24px; }
+            .about-left h2 { font-size: 30px; }
+            .about-icons { grid-template-columns: 1fr 1fr; padding: 40px 24px; gap: 20px; }
+            .mission-section { padding: 60px 0; }
+            .mission-section .container { padding: 0 24px; }
+            .mission-grid { grid-template-columns: 1fr; gap: 24px; }
+            .mission-header h2 { font-size: 30px; }
+            .journey-section .container { padding: 0 24px; }
+            .journey-timeline { grid-template-columns: 1fr 1fr; }
+            .journey-header h2 { font-size: 32px; }
+            .founders-section .container { padding: 0 24px; }
+            .founders-grid { grid-template-columns: 1fr; gap: 50px; margin-top: 50px; }
+            .founder-image { width: 220px; height: 220px; }
+            .founders-section h2 { font-size: 32px; }
+            .certifications-inner { grid-template-columns: 1fr; padding: 0 24px; gap: 30px; }
+            .testimonials-section .container { padding: 0 24px; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .testimonials-section h2 { font-size: 32px; }
+            .newsletter-inner { padding: 0 24px; }
+            .newsletter-form { flex-direction: column; }
+            .footer-inner { grid-template-columns: 1fr; padding: 0 24px; }
+            .footer-bottom { padding: 20px 24px 0; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-about h1 { font-size: 28px; }
+            .trust-inner { grid-template-columns: 1fr; }
+            .about-icons { grid-template-columns: 1fr; }
+            .journey-timeline { grid-template-columns: 1fr; }
+            .founder-image { width: 180px; height: 180px; }
+            .founder-card h3 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div>
+        <div class="top-bar-phone">
+            <span>📞</span>
+            <a href="tel:+919830000000">+91 98300 00000</a>
+        </div>
+        <div class="top-bar-logo">
+            <img src="https://res.cloudinary.com/dxmdcoca3/image/upload/v1781332577/EEPRON_LOGO_1_gp36wk.png" alt="EEPRON Plywood Logo">
+        </div>
+        <button class="cta-button" style="padding:12px 30px;font-size:12px;letter-spacing:1px;">GET FREE QUOTE</button>
+        <button class="ham-menu" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+    <div class="nav-wrapper">
+        <nav>
+            <ul>
+                <li><a href="eepron-plywood-mobile.html">HOME</a></li>
+                <li><a href="eepron-about-us.html" class="active">ABOUT US</a></li>
+                <li><a href="eepron-plywood-mobile.html#products">PRODUCTS</a></li>
+                <li><a href="eepron-plywood-mobile.html#gallery">GALLERY</a></li>
+                <li><a href="eepron-plywood-mobile.html#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+    <a href="eepron-plywood-mobile.html" onclick="toggleMenu()">HOME</a>
+    <a href="eepron-about-us.html" onclick="toggleMenu()">ABOUT US</a>
+    <a href="eepron-plywood-mobile.html#products" onclick="toggleMenu()">PRODUCTS</a>
+    <a href="eepron-plywood-mobile.html#gallery" onclick="toggleMenu()">GALLERY</a>
+    <a href="eepron-plywood-mobile.html#contact" onclick="toggleMenu()">CONTACT</a>
+</div>
+
+<!-- HERO -->
+<section class="hero-about">
+    <div class="hero-about-inner">
+        <div class="hero-about-eyebrow">A UNITED ENTERPRISES BRAND</div>
+        <h1>Building India's Trust,<br>One Sheet at a Time</h1>
+        <p>Since 2003, EEPRON Plywood has been manufacturing premium calibrated plywood from our own factories in Kolkata &amp; Lucknow — delivered factory-direct, across the country.</p>
+    </div>
+</section>
+
+<!-- TRUST / STATS -->
+<section class="trust-section">
+    <div class="trust-inner">
+        <div class="trust-item">
+            <h3>2003</h3>
+            <p>Year United Enterprises began plywood manufacturing</p>
+        </div>
+        <div class="trust-item">
+            <h3>2 FACTORIES</h3>
+            <p>Own manufacturing units in Kolkata &amp; Lucknow</p>
+        </div>
+        <div class="trust-item">
+            <h3>ISO 9001:2015</h3>
+            <p>Certified quality management across production</p>
+        </div>
+        <div class="trust-item">
+            <h3>PAN-INDIA</h3>
+            <p>Godown delivery to dealers &amp; distributors nationwide</p>
+        </div>
+    </div>
+</section>
+
+<!-- OUR STORY -->
+<section class="about-eepron-section" id="story">
+    <div class="about-left">
+        <div class="about-eyebrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+            OUR STORY
+        </div>
+        <h2>FROM A SINGLE UNIT TO A TRUSTED NATIONAL BRAND</h2>
+        <p>EEPRON Plywood began as a single manufacturing unit under United Enterprises, built on a simple promise — deliver plywood that's flat, calibrated, and reliable, sheet after sheet. Over the years, that promise grew into two state-of-the-art factories, in Kolkata and Lucknow, producing full calibrated waterproof and non-waterproof plywood for furniture manufacturers, dealers, and construction companies across India.</p>
+        <p>Today, EEPRON stands for factory-direct pricing, consistent quality, and a supply chain that gets bulk consignments to your godown, on time, wherever you are in the country.</p>
+        <button class="cta-button" style="background:var(--accent-cream);color:var(--text-dark);align-self:flex-start;padding:15px 40px;">GET IN TOUCH</button>
+    </div>
+    <div class="about-icons" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782285955/66492864-d8fd-4ed8-90c4-14261e2c95be_1_sbhphv.jpg');">
+        <div class="icon-block">
+            <div class="icon-box">
+                <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#8a5a2e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+            </div>
+            <h3>TWO MANUFACTURING UNITS</h3>
+            <p>State-of-the-art plywood factories in Kolkata &amp; Lucknow.</p>
+        </div>
+        <div class="icon-block">
+            <div class="icon-box">
+                <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#8a5a2e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+                </svg>
+            </div>
+            <h3>FULL CALIBRATED BOARDS</h3>
+            <p>Precision calibration for uniform thickness sheet to sheet.</p>
+        </div>
+        <div class="icon-block">
+            <div class="icon-box">
+                <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#8a5a2e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>
+                </svg>
+            </div>
+            <h3>WATERPROOF &amp; BWP GRADE</h3>
+            <p>Boiling waterproof boards built for kitchens, bathrooms &amp; humid zones.</p>
+        </div>
+        <div class="icon-block">
+            <div class="icon-box">
+                <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#8a5a2e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
+                </svg>
+            </div>
+            <h3>CUSTOM BRANDING</h3>
+            <p>Private label &amp; custom branding available for dealers and distributors.</p>
+        </div>
+    </div>
+</section>
+
+<!-- MISSION / VISION / VALUES -->
+<section class="mission-section">
+    <div class="container">
+        <div class="mission-header">
+            <div class="mission-eyebrow">WHAT DRIVES US</div>
+            <h2>Mission, Vision &amp; Values</h2>
+        </div>
+        <div class="mission-grid">
+            <div class="mission-card">
+                <div class="mission-card-number">01</div>
+                <h3>Our Mission</h3>
+                <p>To manufacture premium calibrated plywood that furniture makers and builders can rely on, delivered factory-direct at honest prices.</p>
+            </div>
+            <div class="mission-card">
+                <div class="mission-card-number">02</div>
+                <h3>Our Vision</h3>
+                <p>To be India's most trusted plywood brand — known for consistent quality, on-time godown delivery, and long-term dealer partnerships.</p>
+            </div>
+            <div class="mission-card">
+                <div class="mission-card-number">03</div>
+                <h3>Our Values</h3>
+                <p>Quality without compromise, transparency with every dealer, and a factory-direct model that cuts out the middleman.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- JOURNEY / TIMELINE -->
+<section class="journey-section">
+    <div class="container">
+        <div class="journey-header">
+            <div class="journey-eyebrow">OUR JOURNEY</div>
+            <h2>Two Decades of Growth</h2>
+        </div>
+        <div class="journey-timeline">
+            <div class="journey-item">
+                <div class="journey-year">2003</div>
+                <h3>The Beginning</h3>
+                <p>United Enterprises establishes its first plywood manufacturing unit in Kolkata.</p>
+            </div>
+            <div class="journey-item">
+                <div class="journey-year">2011</div>
+                <h3>Scaling Up</h3>
+                <p>Investment in full calibration technology for consistent sheet-to-sheet thickness.</p>
+            </div>
+            <div class="journey-item">
+                <div class="journey-year">2018</div>
+                <h3>Lucknow Facility</h3>
+                <p>Second manufacturing unit opens in Lucknow, expanding capacity &amp; reach.</p>
+            </div>
+            <div class="journey-item">
+                <div class="journey-year">TODAY</div>
+                <h3>EEPRON PLYWOOD</h3>
+                <p>ISO 9001:2015 certified, supplying dealers &amp; distributors pan-India.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOUNDERS -->
+<section class="founders-section">
+    <div class="container">
+        <div class="founders-header">
+            <div class="founders-eyebrow">LEADERSHIP</div>
+            <h2>Meet the People Behind EEPRON</h2>
+            <p class="founders-sub">Driven by decades of manufacturing experience and a commitment to factory-direct quality for every dealer and distributor we work with.</p>
+        </div>
+        <div class="founders-grid">
+            <div class="founder-card">
+                <div class="founder-image" style="background-image:url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop');"></div>
+                <h3>Managing Director</h3>
+                <div class="founder-title">United Enterprises</div>
+                <p class="founder-bio">Leads EEPRON's manufacturing operations across Kolkata &amp; Lucknow, with a focus on calibration quality and factory-direct dealer relationships.</p>
+            </div>
+            <div class="founder-card">
+                <div class="founder-image" style="background-image:url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=400&fit=crop');"></div>
+                <h3>Director of Operations</h3>
+                <div class="founder-title">United Enterprises</div>
+                <p class="founder-bio">Oversees supply chain &amp; godown delivery pan-India, ensuring every bulk order reaches dealers on time, every time.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="certifications-section">
+    <div class="certifications-inner">
+        <div class="certification-item">
+            <h3>FACTORY CERTIFIED</h3>
+            <p>Manufactured in our own ISO-9001:2015 compliant units in Kolkata &amp; Lucknow under strict quality control</p>
+            <div class="iso-badge">ISO 9001:2015 CERTIFIED</div>
+        </div>
+        <div class="certification-item">
+            <h3>QUALITY TESTED</h3>
+            <p>Every batch tested for bonding strength, moisture resistance &amp; calibrated thickness</p>
+        </div>
+        <div class="certification-item">
+            <h3>PAN-INDIA SUPPLY</h3>
+            <p>Reliable bulk supply chain delivering direct to godowns across India</p>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+    <div class="container">
+        <div class="testimonials-header">
+            <div class="testimonials-eyebrow">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M3 3h6v6H3zM15 3h6v6h-6zM3 15h6v6H3zM15 15h6v6h-6z"/>
+                </svg>
+                CLIENT TESTIMONIALS
+            </div>
+            <h2>CLIENTS LOVE OUR QUALITY<br>&amp; FACTORY-DIRECT SUPPLY</h2>
+            <p class="testimonials-sub">Trusted by furniture manufacturers, plywood dealers and distributors across India for consistent calibration and on-time godown delivery.</p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">EEPRON's calibrated plywood is consistently flat and uniform — our furniture units have cut down on rejection rates significantly. The quality and thickness consistency is something we haven't found elsewhere.</p>
+                <div class="testimonial-author-row">
+                    <div class="testimonial-avatar" style="background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop');"></div>
+                    <div class="testimonial-author">
+                        Rajeev Sharma
+                        <span>Furniture Manufacturer, Lucknow</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">Factory-direct pricing and on-time godown delivery have made EEPRON our go-to supplier for BWP plywood. The process from order to delivery is smooth, transparent and reliable every single time.</p>
+                <div class="testimonial-author-row">
+                    <div class="testimonial-avatar" style="background-image:url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&h=120&fit=crop');"></div>
+                    <div class="testimonial-author">
+                        Subrata Das
+                        <span>Plywood Dealer, Kolkata</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter-section">
+    <div class="newsletter-inner">
+        <h2>STAY UPDATED WITH EEPRON PLYWOOD</h2>
+        <p>Subscribe for new product launches, dealer offers &amp; factory updates</p>
+        <div class="newsletter-form">
+            <input type="email" placeholder="Enter your email address">
+            <button type="submit">SUBSCRIBE</button>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-section">
+            <h3>EEPRON PLYWOOD</h3>
+            <p>A premium plywood manufacturing brand under United Enterprises, with factories in Kolkata &amp; Lucknow delivering full calibrated waterproof &amp; non-waterproof plywood across India.</p>
+        </div>
+        <div class="footer-section">
+            <h3>QUICK LINKS</h3>
+            <ul>
+                <li><a href="eepron-plywood-mobile.html#products">Our Products</a></li>
+                <li><a href="eepron-plywood-mobile.html#orders">Bulk Orders</a></li>
+                <li><a href="eepron-about-us.html">About Us</a></li>
+                <li><a href="eepron-plywood-mobile.html#contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>CONTACT INFO</h3>
+            <ul>
+                <li>EEPRON Plywood — United Enterprises</li>
+                <li>Street No. 194, CE Block (Newtown), Action Area I, Kolkata, West Bengal</li>
+                <li><a href="mailto:sales@eepronplywood.com">📧 sales@eepronplywood.com</a></li>
+                <li><a href="tel:+919830000000">📞 +91 98300 00000</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>BUSINESS HOURS</h3>
+            <ul>
+                <li>Mon – Sat: 09:00 am – 05:00 pm</li>
+                <li>Sunday: Closed</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>EEPRON PLYWOOD — UNITED ENTERPRISES | sales@eepronplywood.com</p>
+        <p style="margin-top:8px;">Copyright &copy; 2026 EEPRON PLYWOOD - All Rights Reserved.</p>
+    </div>
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/919830000000" class="whatsapp-float" target="_blank" aria-label="Message us on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-1.732-.866-2.867-1.546-4.006-3.506-.302-.522.302-.484.864-1.612.095-.197.047-.371-.05-.52-.099-.149-.669-1.612-.916-2.207-.242-.578-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.05 3.13 4.974 4.26 2.926 1.131 2.926.755 3.45.71.526-.043 1.69-.69 1.93-1.36.235-.668.235-1.24.165-1.358-.07-.118-.272-.198-.57-.347zM12 2c5.523 0 10 4.477 10 10 0 5.523-4.477 10-10 10-1.79 0-3.466-.469-4.92-1.286l-5.08 1.286 1.285-5.08C2.469 15.466 2 13.79 2 12 2 6.477 6.477 2 12 2zm0 1.8c-4.529 0-8.2 3.671-8.2 8.2 0 1.633.477 3.155 1.301 4.434l.21.33-.708 2.797 2.797-.708.33.21A8.2 8.2 0 1 0 12 3.8z"/></svg>
+</a>
+
+<script>
+    function toggleMenu() {
+        const mobileNav = document.getElementById('mobileNav');
+        const hamMenu = document.querySelector('.ham-menu');
+        mobileNav.classList.toggle('active');
+        hamMenu.classList.toggle('active');
+    }
+</script>
+
+</body>
+</html>
