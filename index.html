@@ -37,10 +37,8 @@
 
         /* ── HEADER ── */
         header {
-            background: transparent;
-            position: fixed;
-            top: 0;
-            z-index: 100;
+            background: var(--primary-dark);
+            position: relative;
             width: 100%;
         }
         header > div:first-child {
@@ -194,7 +192,7 @@
             display: flex; flex-direction: column; gap: 20px;
             padding: 80px;
             max-width: 760px;
-            margin-top: 120px;
+            margin-top: 0;
         }
         .hero h1 { font-size: 68px; margin: 0; letter-spacing: 1px; line-height: 1.05; font-weight: 900; text-transform: uppercase; }
         .hero-subtitle { font-size: 16px; margin: 0; letter-spacing: 0.5px; line-height: 1.7; font-weight: 400; }
@@ -769,7 +767,7 @@
             nav li { flex: 0 0 50%; }
             nav a { font-size: 11px; padding: 14px 8px; }
             .hero h1 { font-size: 36px; }
-            .hero-content-left { padding: 40px 24px; margin-top: 80px; max-width: 100%; }
+            .hero-content-left { padding: 40px 24px; max-width: 100%; }
             .hero-cta-section-left { flex-wrap: wrap; gap: 20px; }
             .trust-inner { grid-template-columns: 1fr 1fr; padding: 40px 24px; gap: 24px; }
             .about-eepron-section { grid-template-columns: 1fr; }
@@ -819,7 +817,7 @@
         <div class="top-bar-logo">
             <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1783059499/EEPRON_LOGO.JPG_js6iok.jpg" alt="EEPRON Plywood Logo">
         </div>
-        <button class="cta-button" style="padding:12px 30px;font-size:12px;letter-spacing:1px;">GET FREE QUOTE</button>
+        <button class="cta-button" style="padding:12px 30px;font-size:12px;letter-spacing:1px;" onclick="location.href='https://www.eepronplywood.com/contact.html'">GET FREE QUOTE</button>
         <button class="ham-menu" onclick="toggleMenu()">
             <span></span>
             <span></span>
@@ -829,11 +827,11 @@
     <div class="nav-wrapper">
         <nav>
             <ul>
-                <li><a href="#home">HOME</a></li>
-                <li><a href="#about">ABOUT US</a></li>
-                <li><a href="products.html">PRODUCTS</a></li>
-                <li><a href="#gallery">GALLERY</a></li>
-                <li><a href="#contact">CONTACT</a></li>
+                <li><a href="https://www.eepronplywood.com/">HOME</a></li>
+                <li><a href="https://www.eepronplywood.com/about.html">ABOUT US</a></li>
+                <li><a href="https://www.eepronplywood.com/products.html">PRODUCTS</a></li>
+                <li><a href="https://www.eepronplywood.com/gallery.html">GALLERY</a></li>
+                <li><a href="https://www.eepronplywood.com/contact.html">CONTACT</a></li>
             </ul>
         </nav>
     </div>
@@ -841,11 +839,11 @@
 
 <!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobileNav">
-    <a href="#home" onclick="toggleMenu()">HOME</a>
-    <a href="#about" onclick="toggleMenu()">ABOUT US</a>
-    <a href="products.html" onclick="toggleMenu()">PRODUCTS</a>
-    <a href="#gallery" onclick="toggleMenu()">GALLERY</a>
-    <a href="#contact" onclick="toggleMenu()">CONTACT</a>
+    <a href="https://www.eepronplywood.com/" onclick="toggleMenu()">HOME</a>
+    <a href="https://www.eepronplywood.com/about.html" onclick="toggleMenu()">ABOUT US</a>
+    <a href="https://www.eepronplywood.com/products.html" onclick="toggleMenu()">PRODUCTS</a>
+    <a href="https://www.eepronplywood.com/gallery.html" onclick="toggleMenu()">GALLERY</a>
+    <a href="https://www.eepronplywood.com/contact.html" onclick="toggleMenu()">CONTACT</a>
 </div>
 
 <!-- HERO -->
@@ -860,7 +858,7 @@
         <h1>PREMIUM CALIBRATED<br><span>PLYWOOD FOR INDIA</span></h1>
         <p class="hero-subtitle">Full calibrated waterproof &amp; non-waterproof plywood manufactured in Kolkata  <br>Delivered direct to your godown — straight from the factory.</p>
         <div class="hero-cta-section-left">
-            <button class="cta-button">GET A QUOTE</button>
+            <button class="cta-button" onclick="location.href='https://www.eepronplywood.com/contact.html'">GET A QUOTE</button>
             <div class="hero-reviews-left">
                 <div class="review-number-left">2 units</div>
                 <div class="review-label-left">Kolkata</div>
@@ -929,7 +927,7 @@
         </div>
         <h2>EEPRON PLYWOOD — A UNITED ENTERPRISES BRAND</h2>
         <p>EEPRON Plywood is a premium plywood manufacturing brand under United Enterprises, committed to delivering superior quality wood panel solutions across India. With state-of-the-art manufacturing units in Kolkata and Lucknow, we produce full calibrated waterproof and non-waterproof plywood that's built to perform.</p>
-        <button class="cta-button" style="background:var(--accent-cream);color:var(--text-dark);align-self:flex-start;padding:15px 40px;">FIND OUT MORE</button>
+        <button class="cta-button" style="background:var(--accent-cream);color:var(--text-dark);align-self:flex-start;padding:15px 40px;" onclick="location.href='https://www.eepronplywood.com/about.html'">FIND OUT MORE</button>
     </div>
     <div class="about-icons" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782285955/66492864-d8fd-4ed8-90c4-14261e2c95be_1_sbhphv.jpg');">
         <div class="icon-block">
@@ -1152,7 +1150,7 @@
         </div>
 
         <div style="text-align:center;margin-top:40px;">
-            <button class="cta-button">REQUEST CUSTOM QUOTE</button>
+            <button class="cta-button" onclick="location.href='https://www.eepronplywood.com/contact.html'">REQUEST CUSTOM QUOTE</button>
         </div>
     </div>
 </section>
@@ -1301,7 +1299,7 @@
                 <li><span>→</span> Custom branding &amp; private labelling for dealers</li>
                 <li><span>→</span> Dedicated support from order to delivery</li>
             </ul>
-            <button class="cta-button" style="margin-top:10px;">REQUEST BULK QUOTE</button>
+            <button class="cta-button" style="margin-top:10px;" onclick="location.href='https://www.eepronplywood.com/contact.html'">REQUEST BULK QUOTE</button>
         </div>
         <div class="financing-img-group">
             <div class="financing-img" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782285955/66492864-d8fd-4ed8-90c4-14261e2c95be_1_sbhphv.jpg');"></div>
@@ -1332,10 +1330,10 @@
         <div class="footer-section">
             <h3>QUICK LINKS</h3>
             <ul>
-                <li><a href="products.html">Our Products</a></li>
+                <li><a href="https://www.eepronplywood.com/products.html">Our Products</a></li>
                 <li><a href="#orders">Bulk Orders</a></li>
                 <li><a href="#about">About Us</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="https://www.eepronplywood.com/contact.html">Contact</a></li>
             </ul>
         </div>
         <div class="footer-section">
