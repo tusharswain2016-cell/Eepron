@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products — EEPRON Plywood | Marine, Club, Star & Shuttering Plywood</title>
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Saira Condensed', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+
+        :root {
+            --primary-dark: #4a2e1a;
+            --primary-light: #8a5a2e;
+            --accent-cream: #f5ede0;
+            --accent-gold: #d99c2b;
+            --text-dark: #2a1f15;
+            --container-max: 1200px;
+        }
+
+        /* ── HEADER ── */
+        header {
+            background: var(--primary-dark);
+            position: relative;
+            width: 100%;
+        }
+        header > div:first-child {
+            background: transparent;
+            padding: 20px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+        .top-bar-phone {
+            color: #fff;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .top-bar-phone a { color: #fff; text-decoration: none; font-weight: 700; }
+        .top-bar-logo { flex: 1; display: flex; justify-content: center; }
+        .top-bar-logo img { height: 72px; display: block; }
+        .nav-wrapper { margin: 0 80px; border: 1px solid rgba(255,255,255,0.2); display: flex; }
+        nav { width: 100%; }
+        nav ul { display: flex; list-style: none; gap: 0; margin: 0; }
+        nav li { flex: 1; text-align: center; border-right: 1px solid rgba(255,255,255,0.15); }
+        nav li:last-child { border-right: none; }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            display: block;
+            font-weight: 700;
+            padding: 18px 10px;
+            transition: all 0.3s;
+        }
+        nav a:hover { color: var(--accent-gold); background: rgba(217,156,43,0.1); }
+        .cta-button {
+            background: var(--accent-gold);
+            color: white;
+            padding: 12px 35px;
+            border: none;
+            font-size: 13px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: inline-block;
+            font-family: 'Saira Condensed', sans-serif;
+            font-weight: 700;
+        }
+        .cta-button:hover { background: #b87f1f; }
+
+        /* ── HAMBURGER MENU ── */
+        .ham-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 10px;
+            z-index: 1001;
+        }
+        .ham-menu span {
+            width: 25px;
+            height: 2.5px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .ham-menu.active span:nth-child(1) { transform: rotate(45deg) translateY(10px); }
+        .ham-menu.active span:nth-child(2) { opacity: 0; }
+        .ham-menu.active span:nth-child(3) { transform: rotate(-45deg) translateY(-10px); }
+
+        /* ── MOBILE NAV ── */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .mobile-nav.active { display: flex; }
+        .mobile-nav a {
+            color: #fff;
+            font-size: 24px;
+            text-decoration: none;
+            margin: 20px 0;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .mobile-nav a:hover { color: var(--accent-gold); }
+
+        /* ── HERO BANNER ── */
+        .hero-page {
+            height: 50vh;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+            padding: 80px 80px 60px;
+        }
+        .hero-page h1 {
+            font-size: 60px;
+            font-weight: 900;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .hero-page p {
+            font-size: 17px;
+            max-width: 650px;
+            margin: 0 auto;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+
+        /* ── CONTAINER ── */
+        .container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 80px;
+        }
+        @media (max-width: 900px) { .container { padding: 0 40px; } }
+        @media (max-width: 480px) { .container { padding: 0 20px; } }
+
+        /* ── QUICK JUMP NAV ── */
+        .quick-jump {
+            background: var(--accent-cream);
+            padding: 22px 0;
+        }
+        .quick-jump-inner {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .quick-jump a {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--primary-dark);
+            text-decoration: none;
+            padding: 10px 22px;
+            border: 2px solid var(--primary-dark);
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+        .quick-jump a:hover {
+            background: var(--primary-dark);
+            color: #fff;
+        }
+
+        /* ── PRODUCT SECTION ── */
+        .product-section {
+            padding: 90px 0;
+        }
+        .product-section.alt { background: var(--accent-cream); }
+
+        .product-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .product-block.reverse .product-image { order: 2; }
+        .product-block.reverse .product-text { order: 1; }
+
+        .product-image {
+            height: 420px;
+            border-radius: 8px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        .product-tagline {
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+        .product-text h2 {
+            font-size: 40px;
+            font-weight: 900;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .product-text p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.9;
+            margin-bottom: 24px;
+        }
+        .product-features {
+            list-style: none;
+            margin-bottom: 28px;
+        }
+        .product-features li {
+            font-size: 14px;
+            color: var(--text-dark);
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .product-features li span {
+            color: var(--accent-gold);
+            font-weight: 900;
+            font-size: 16px;
+        }
+
+        /* ── SEGMENT MINI-GRID (customized plywood) ── */
+        .segment-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 20px;
+        }
+        .segment-card {
+            background: #fff;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+        .segment-card-img {
+            height: 160px;
+            background-size: cover;
+            background-position: center;
+        }
+        .segment-card-body {
+            padding: 18px 20px 22px;
+        }
+        .segment-card-body h4 {
+            font-size: 15px;
+            font-weight: 900;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 0.3px;
+        }
+        .segment-card-body p {
+            font-size: 12.5px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* ── CTA SECTION ── */
+        .cta-section {
+            text-align: center;
+            padding: 90px 0;
+            background: var(--primary-dark);
+            color: #fff;
+        }
+        .cta-section h2 {
+            font-size: 38px;
+            font-weight: 900;
+            margin-bottom: 18px;
+        }
+        .cta-section p {
+            font-size: 15px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 35px;
+            max-width: 560px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-btn-primary {
+            background: var(--accent-gold);
+            color: white;
+            padding: 16px 45px;
+            border: none;
+            font-size: 14px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            font-family: 'Saira Condensed', sans-serif;
+            font-weight: 700;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .cta-btn-primary:hover { background: #b87f1f; transform: translateY(-2px); }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #2e1c10;
+            color: #ddd;
+            padding: 60px 0 30px;
+        }
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 2fr 1fr 2fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-section h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 10px; font-size: 13px; }
+        .footer-section a { color: #ddd; text-decoration: none; transition: color 0.3s; }
+        .footer-section a:hover { color: var(--accent-gold); }
+        .footer-section p { font-size: 13px; line-height: 1.8; }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 20px 80px 0;
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* ── WHATSAPP ── */
+        .whatsapp-float {
+            position: fixed; bottom: 25px; right: 25px; z-index: 200;
+            background: #25D366; width: 58px; height: 58px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3); text-decoration: none; transition: transform 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.08); }
+        .whatsapp-float svg { width: 30px; height: 30px; fill: #fff; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .segment-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header > div:first-child {
+                padding: 15px 20px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                border-bottom: 1px solid rgba(255,255,255,0.15);
+            }
+            .nav-wrapper { display: none; margin: 0; border: none; }
+            .top-bar-logo { flex: 0; }
+            .top-bar-logo img { height: 40px; }
+            .cta-button { display: none; }
+            .ham-menu { display: flex; }
+            .hero-page {
+                height: auto;
+                padding: 60px 24px 50px;
+            }
+            .hero-page h1 { font-size: 34px; }
+            .hero-page p { font-size: 15px; }
+            .container { padding: 0 24px; }
+            .quick-jump { padding: 18px 0; }
+            .quick-jump-inner { gap: 8px; }
+            .quick-jump a { padding: 8px 14px; font-size: 10px; }
+            .product-section { padding: 55px 0; }
+            .product-block, .product-block.reverse { grid-template-columns: 1fr; gap: 30px; }
+            .product-block .product-image,
+            .product-block.reverse .product-image { order: 1; }
+            .product-block .product-text,
+            .product-block.reverse .product-text { order: 2; }
+            .product-image { height: 260px; }
+            .product-text h2 { font-size: 28px; }
+            .segment-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+            .cta-section { padding: 55px 0; }
+            .cta-section h2 { font-size: 28px; }
+            .footer-inner { grid-template-columns: 1fr; padding: 0 24px; }
+            .footer-bottom { padding: 20px 24px 0; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-page { padding: 50px 20px 40px; }
+            .hero-page h1 { font-size: 26px; }
+            .segment-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div>
+        <div class="top-bar-phone">
+            <span>📞</span>
+            <a href="tel:+916290662274">+91 6290 662 274</a>
+        </div>
+        <div class="top-bar-logo">
+            <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1783059499/EEPRON_LOGO.JPG_js6iok.jpg" alt="EEPRON Plywood Logo">
+        </div>
+        <button class="cta-button" onclick="location.href='https://www.eepronplywood.com/contact.html'">GET FREE QUOTE</button>
+        <button class="ham-menu" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+    <div class="nav-wrapper">
+        <nav>
+            <ul>
+                <li><a href="https://www.eepronplywood.com/">HOME</a></li>
+                <li><a href="https://www.eepronplywood.com/about.html">ABOUT US</a></li>
+                <li><a href="https://www.eepronplywood.com/products.html">PRODUCTS</a></li>
+                <li><a href="https://www.eepronplywood.com/gallery.html">GALLERY</a></li>
+                <li><a href="https://www.eepronplywood.com/contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+    <a href="https://www.eepronplywood.com/" onclick="toggleMenu()">HOME</a>
+    <a href="https://www.eepronplywood.com/about.html" onclick="toggleMenu()">ABOUT US</a>
+    <a href="https://www.eepronplywood.com/products.html" onclick="toggleMenu()">PRODUCTS</a>
+    <a href="https://www.eepronplywood.com/gallery.html" onclick="toggleMenu()">GALLERY</a>
+    <a href="https://www.eepronplywood.com/contact.html" onclick="toggleMenu()">CONTACT</a>
+</div>
+
+<!-- HERO BANNER -->
+<section class="hero-page">
+    <div>
+        <h1>Our Products</h1>
+        <p>Full calibrated waterproof &amp; non-waterproof plywood, manufactured in Kolkata &amp; Lucknow — engineered for furniture, construction &amp; every application in between.</p>
+    </div>
+</section>
+
+<!-- QUICK JUMP -->
+<div class="quick-jump">
+    <div class="quick-jump-inner">
+        <a href="#marine">Eepron Marine</a>
+        <a href="#club">Eepron Club</a>
+        <a href="#star">Eepron Star</a>
+        <a href="#segments">Customized Plywood</a>
+        <a href="#shuttering">Shuttering Plywood</a>
+    </div>
+</div>
+
+<!-- EEPRON MARINE -->
+<section class="product-section" id="marine">
+    <div class="container">
+        <div class="product-block">
+            <div class="product-image" style="background-image:url('https://res.cloudinary.com/dey4zikfh/image/upload/v1783580115/Epporn_marine_m1ep66.jpg');"></div>
+            <div class="product-text">
+                <div class="product-tagline">Premium Marine Grade</div>
+                <h2>Eepron Marine</h2>
+                <p>Premium waterproof marine-grade plywood engineered for kitchens, bathrooms &amp; high-moisture areas. Built with boiling waterproof (BWP) bonding for long-term durability in the toughest conditions.</p>
+                <ul class="product-features">
+                    <li><span>✓</span> Boiling waterproof (BWP) grade bonding</li>
+                    <li><span>✓</span> Ideal for kitchens, bathrooms &amp; humid zones</li>
+                    <li><span>✓</span> Full calibrated for uniform thickness</li>
+                    <li><span>✓</span> Termite &amp; borer resistant core</li>
+                </ul>
+                <button class="cta-button" onclick="location.href='https://www.eepronplywood.com/contact.html'">Enquire About Marine</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EEPRON CLUB -->
+<section class="product-section alt" id="club">
+    <div class="container">
+        <div class="product-block reverse">
+            <div class="product-image" style="background-image:url('https://res.cloudinary.com/dey4zikfh/image/upload/v1783580114/Eepron_club_umm3z0.jpg');"></div>
+            <div class="product-text">
+                <div class="product-tagline">Commercial Grade</div>
+                <h2>Eepron Club</h2>
+                <p>Commercial-grade plywood built for furniture manufacturing &amp; interior applications. A strong composite core with BWR-grade bonding makes it ideal for cabinetry, shelving &amp; everyday furniture work.</p>
+                <ul class="product-features">
+                    <li><span>✓</span> BWR-grade (boiling water resistant) bonding</li>
+                    <li><span>✓</span> Strong composite core for cabinetry &amp; shelving</li>
+                    <li><span>✓</span> Full calibrated, smooth surface finish</li>
+                    <li><span>✓</span> Cost-effective for furniture manufacturers</li>
+                </ul>
+                <button class="cta-button" onclick="location.href='https://www.eepronplywood.com/contact.html'">Enquire About Club</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EEPRON STAR -->
+<section class="product-section" id="star">
+    <div class="container">
+        <div class="product-block">
+            <div class="product-image" style="background-image:url('https://res.cloudinary.com/dey4zikfh/image/upload/v1783580331/fa9728dd-0126-454a-9e04-7887d76c2540_i4ok7c.jpg');"></div>
+            <div class="product-text">
+                <div class="product-tagline">Economy Grade</div>
+                <h2>Eepron Star</h2>
+                <p>Cost-effective plywood built for interior partitions &amp; non-critical applications. Lightweight boards that don't compromise on consistency, ideal for budget-conscious commercial construction projects.</p>
+                <ul class="product-features">
+                    <li><span>✓</span> Lightweight, economical construction</li>
+                    <li><span>✓</span> Suited to interior partitions &amp; budget projects</li>
+                    <li><span>✓</span> Full calibrated for consistent dimensions</li>
+                    <li><span>✓</span> Reliable factory-direct pricing on bulk orders</li>
+                </ul>
+                <button class="cta-button" onclick="location.href='https://www.eepronplywood.com/contact.html'">Enquire About Star</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CUSTOMIZED PLYWOOD -->
+<section class="product-section alt" id="segments">
+    <div class="container">
+        <div class="product-tagline" style="text-align:center;">Made To Order</div>
+        <h2 style="text-align:center;font-size:40px;font-weight:900;color:var(--text-dark);text-transform:uppercase;margin-bottom:16px;">Customized Plywood</h2>
+        <p style="text-align:center;font-size:15px;color:#555;max-width:680px;margin:0 auto 40px;line-height:1.9;">Custom core specifications available for large bulk orders &amp; specialized projects — choose the construction that fits your application.</p>
+        <div class="segment-grid">
+            <div class="segment-card">
+                <div class="segment-card-img" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286096/6517177d-b8f1-46cc-ba70-93774aee14e7_1_gsmj4z.jpg');"></div>
+                <div class="segment-card-body">
+                    <h4>Red Core PF</h4>
+                    <p>Premium grade with red core phenol formaldehyde for superior durability.</p>
+                </div>
+            </div>
+            <div class="segment-card">
+                <div class="segment-card-img" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286095/90de738c-3b21-49cf-b1a2-dc0a96fc43a4_ix1xsg.jpg');"></div>
+                <div class="segment-card-body">
+                    <h4>Alternate</h4>
+                    <p>Alternating veneer construction for strength &amp; flexibility.</p>
+                </div>
+            </div>
+            <div class="segment-card">
+                <div class="segment-card-img" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286096/0289e158-905e-4ea4-8fc4-2782ba8068c0_w25b48.jpg');"></div>
+                <div class="segment-card-body">
+                    <h4>Semi Alternate</h4>
+                    <p>Semi-alternating construction balancing cost &amp; performance.</p>
+                </div>
+            </div>
+            <div class="segment-card">
+                <div class="segment-card-img" style="background-image:url('https://res.cloudinary.com/dey4zikfh/image/upload/v1783581506/94a173da-cc23-4778-8fa3-010760d50285_izz86u.jpg');"></div>
+                <div class="segment-card-body">
+                    <h4>Super MR</h4>
+                    <p>Super moisture resistant boards for humid &amp; coastal applications.</p>
+                </div>
+            </div>
+            <div class="segment-card">
+                <div class="segment-card-img" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286096/6517177d-b8f1-46cc-ba70-93774aee14e7_lxwhho.jpg');"></div>
+                <div class="segment-card-body">
+                    <h4>New Zealand Pine Block</h4>
+                    <p>Premium block board with New Zealand pine core for lightweight strength.</p>
+                </div>
+            </div>
+            <div class="segment-card">
+                <div class="segment-card-img" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286095/f79b8a63-76ed-4bd7-97c9-6f7dd6de989d_fxxfhu.jpg');"></div>
+                <div class="segment-card-body">
+                    <h4>Red Core (Custom Grade)</h4>
+                    <p>Custom specifications available for large bulk orders &amp; projects.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SHUTTERING PLYWOOD -->
+<section class="product-section" id="shuttering">
+    <div class="container">
+        <div class="product-block">
+            <div class="product-image" style="background-image:url('https://res.cloudinary.com/dey4zikfh/image/upload/v1783580467/33013654-b160-45eb-bd74-ee48150c1c27.png');"></div>
+            <div class="product-text">
+                <div class="product-tagline">Construction Grade</div>
+                <h2>Shuttering Plywood</h2>
+                <p>Red &amp; black phenolic film-faced plywood built for concrete shuttering &amp; heavy-duty form work — engineered for high reuse and a superior finish on every pour.</p>
+                <ul class="product-features">
+                    <li><span>✓</span> Red film-faced shuttering plywood</li>
+                    <li><span>✓</span> Black film-faced plywood for heavy-duty projects</li>
+                    <li><span>✓</span> High-reuse durability &amp; smooth concrete finish</li>
+                    <li><span>✓</span> Bulk supply for construction companies pan-India</li>
+                </ul>
+                <button class="cta-button" onclick="location.href='https://www.eepronplywood.com/contact.html'">Enquire About Shuttering</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-section">
+    <div class="container">
+        <h2>Need a Custom Quote?</h2>
+        <p>Tell us your grade, thickness &amp; quantity — we'll get back to you with factory-direct pricing and godown delivery timelines.</p>
+        <button class="cta-btn-primary" onclick="location.href='https://www.eepronplywood.com/contact.html'">Request Custom Quote</button>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-section">
+                <h3>EEPRON PLYWOOD</h3>
+                <p>A premium plywood manufacturing brand under United Enterprises, with factories in Kolkata &amp; Lucknow delivering full calibrated waterproof &amp; non-waterproof plywood across India.</p>
+            </div>
+            <div class="footer-section">
+                <h3>QUICK LINKS</h3>
+                <ul>
+                    <li><a href="https://www.eepronplywood.com/">Home</a></li>
+                    <li><a href="https://www.eepronplywood.com/about.html">About Us</a></li>
+                    <li><a href="https://www.eepronplywood.com/products.html">Products</a></li>
+                    <li><a href="https://www.eepronplywood.com/gallery.html">Gallery</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>CONTACT INFO</h3>
+                <ul>
+                    <li>Street No. 194, CE Block (Newtown), Action Area I, Kolkata, West Bengal</li>
+                    <li>📧 <a href="mailto:sales@eepronplywood.com">sales@eepronplywood.com</a></li>
+                    <li>📞 <a href="tel:+916290662274">+91 6290 662 274</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>BUSINESS HOURS</h3>
+                <ul>
+                    <li>Mon – Sat: 10:00 am – 07:00 pm</li>
+                    <li>Sunday: Closed</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2026 EEPRON PLYWOOD - All Rights Reserved. A United Enterprises Brand.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/916290662274" class="whatsapp-float" target="_blank" aria-label="Message us on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-1.732-.866-2.867-1.546-4.006-3.506-.302-.522.302-.484.864-1.612.095-.197.047-.371-.05-.52-.099-.149-.669-1.612-.916-2.207-.242-.578-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.05 3.13 4.974 4.26 2.926 1.131 2.926.755 3.45.71.526-.043 1.69-.69 1.93-1.36.235-.668.235-1.24.165-1.358-.07-.118-.272-.198-.57-.347zM12 2c5.523 0 10 4.477 10 10 0 5.523-4.477 10-10 10-1.79 0-3.466-.469-4.92-1.286l-5.08 1.286 1.285-5.08C2.469 15.466 2 13.79 2 12 2 6.477 6.477 2 12 2zm0 1.8c-4.529 0-8.2 3.671-8.2 8.2 0 1.633.477 3.155 1.301 4.434l.21.33-.708 2.797 2.797-.708.33.21A8.2 8.2 0 1 0 12 3.8z"/></svg>
+</a>
+
+<script>
+function toggleMenu() {
+    const mobileNav = document.getElementById('mobileNav');
+    const hamMenu = document.querySelector('.ham-menu');
+    mobileNav.classList.toggle('active');
+    hamMenu.classList.toggle('active');
+}
+</script>
+
+</body>
+</html>

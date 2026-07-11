@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us — EEPRON Plywood | Kolkata & Lucknow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Saira Condensed', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+
+        :root {
+            --primary-dark: #4a2e1a;
+            --primary-light: #8a5a2e;
+            --accent-cream: #f5ede0;
+            --accent-gold: #d99c2b;
+            --text-dark: #2a1f15;
+            --container-max: 1200px;
+        }
+
+        /* ── HEADER ── */
+        header { background: transparent; width: 100%; }
+        header > div:first-child {
+            background: var(--primary-dark);
+            padding: 20px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+        .top-bar-phone { color: #fff; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+        .top-bar-phone a { color: #fff; text-decoration: none; font-weight: 700; }
+        .top-bar-logo { flex: 1; display: flex; justify-content: center; }
+        .top-bar-logo img { height: 72px; display: block; }
+        .nav-wrapper { margin: 0; border: none; display: flex; background: var(--primary-dark); }
+        nav { width: 100%; max-width: var(--container-max); margin: 0 auto; border: 1px solid rgba(255,255,255,0.2); }
+        nav ul { display: flex; list-style: none; gap: 0; margin: 0; }
+        nav li { flex: 1; text-align: center; border-right: 1px solid rgba(255,255,255,0.15); }
+        nav li:last-child { border-right: none; }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            display: block;
+            font-weight: 700;
+            padding: 18px 10px;
+            transition: all 0.3s;
+        }
+        nav a:hover { color: var(--accent-gold); background: rgba(217,156,43,0.1); }
+        nav a.active { color: var(--accent-gold); }
+        .cta-button {
+            background: var(--accent-gold);
+            color: white;
+            padding: 12px 35px;
+            border: none;
+            font-size: 13px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: inline-block;
+            font-family: 'Saira Condensed', sans-serif;
+            font-weight: 700;
+        }
+        .cta-button:hover { background: #b87f1f; }
+
+        /* ── HAMBURGER MENU ── */
+        .ham-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 10px;
+            z-index: 1001;
+        }
+        .ham-menu span { width: 25px; height: 2.5px; background: #fff; border-radius: 2px; transition: all 0.3s ease; }
+        .ham-menu.active span:nth-child(1) { transform: rotate(45deg) translateY(10px); }
+        .ham-menu.active span:nth-child(2) { opacity: 0; }
+        .ham-menu.active span:nth-child(3) { transform: rotate(-45deg) translateY(-10px); }
+
+        /* ── MOBILE NAV ── */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .mobile-nav.active { display: flex; }
+        .mobile-nav a {
+            color: #fff; font-size: 24px; text-decoration: none; margin: 20px 0;
+            font-weight: 700; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s;
+        }
+        .mobile-nav a:hover { color: var(--accent-gold); }
+
+        /* ── HERO BANNER ── */
+        .hero-page {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+            padding: 80px 80px;
+        }
+        .hero-page h1 { font-size: 56px; font-weight: 900; margin-bottom: 16px; letter-spacing: 1px; text-transform: uppercase; }
+        .hero-page p { font-size: 16px; max-width: 620px; margin: 0 auto; opacity: 0.95; line-height: 1.7; }
+
+        /* ── CONTAINER ── */
+        .container { max-width: var(--container-max); margin: 0 auto; padding: 0 80px; }
+        @media (max-width: 900px) { .container { padding: 0 40px; } }
+        @media (max-width: 480px) { .container { padding: 0 20px; } }
+
+        /* ── CONTACT SECTION ── */
+        .contact-section { padding: 90px 0; }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+        }
+
+        /* ── INFO CARDS ── */
+        .info-cards { display: flex; flex-direction: column; gap: 20px; }
+        .info-card {
+            background: var(--accent-cream);
+            border-left: 4px solid var(--accent-gold);
+            border-radius: 6px;
+            padding: 26px 28px;
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+        }
+        .info-icon {
+            width: 48px; height: 48px; flex-shrink: 0;
+            background: var(--primary-dark);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px;
+        }
+        .info-card h3 {
+            font-size: 15px;
+            font-weight: 900;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        .info-card p, .info-card a {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.75;
+            text-decoration: none;
+        }
+        .info-card a:hover { color: var(--accent-gold); }
+
+        .facility-mini {
+            display: flex;
+            gap: 14px;
+            margin-top: 6px;
+        }
+        .facility-mini-item {
+            flex: 1;
+            background: #fff;
+            border-radius: 4px;
+            padding: 10px 12px;
+        }
+        .facility-mini-item span {
+            display: block;
+            font-size: 10px;
+            letter-spacing: 1px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .facility-mini-item strong { font-size: 13px; color: var(--text-dark); }
+
+        /* ── FORM ── */
+        .contact-form-wrap {
+            background: var(--primary-dark);
+            border-radius: 8px;
+            padding: 50px;
+            color: #fff;
+        }
+        .contact-form-wrap h2 {
+            font-size: 30px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .contact-form-wrap > p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 30px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+        .form-group { display: flex; flex-direction: column; gap: 8px; }
+        .form-group.full { grid-column: 1 / -1; }
+        .form-group label {
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.8);
+            font-weight: 700;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 4px;
+            padding: 13px 14px;
+            color: #fff;
+            font-size: 14px;
+            font-family: 'Saira Condensed', sans-serif;
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color: rgba(255,255,255,0.4); }
+        .form-group select option { background: var(--primary-dark); color: #fff; }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+        .form-group textarea { resize: vertical; min-height: 110px; }
+        .form-submit {
+            background: var(--accent-gold);
+            color: #fff;
+            border: none;
+            padding: 15px 45px;
+            font-size: 14px;
+            letter-spacing: 1px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Saira Condensed', sans-serif;
+            transition: background 0.3s;
+            margin-top: 6px;
+        }
+        .form-submit:hover { background: #b87f1f; }
+        .form-note {
+            font-size: 12px;
+            color: rgba(255,255,255,0.55);
+            margin-top: 14px;
+        }
+
+        /* ── MAP ── */
+        .map-section { padding: 0 0 90px; }
+        .map-wrap {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+        .map-wrap iframe { width: 100%; height: 420px; border: 0; display: block; }
+
+        /* ── FOOTER ── */
+        footer { background: #2e1c10; color: #ddd; padding: 60px 0 30px; }
+        .footer-inner { display: grid; grid-template-columns: 2fr 1fr 2fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-section h3 { color: #fff; margin-bottom: 15px; font-size: 14px; letter-spacing: 1px; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 10px; font-size: 13px; }
+        .footer-section a { color: #ddd; text-decoration: none; transition: color 0.3s; }
+        .footer-section a:hover { color: var(--accent-gold); }
+        .footer-section p { font-size: 13px; line-height: 1.8; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding: 20px 80px 0; text-align: center; font-size: 12px; color: #999; }
+
+        /* ── WHATSAPP ── */
+        .whatsapp-float {
+            position: fixed; bottom: 25px; right: 25px; z-index: 200;
+            background: #25D366; width: 58px; height: 58px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3); text-decoration: none; transition: transform 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.08); }
+        .whatsapp-float svg { width: 30px; height: 30px; fill: #fff; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            header > div:first-child { padding: 15px 20px; flex-wrap: wrap; justify-content: space-between; }
+            .nav-wrapper { display: none; }
+            .top-bar-logo { flex: 0; }
+            .top-bar-logo img { height: 40px; }
+            .cta-button { display: none; }
+            .ham-menu { display: flex; }
+            .hero-page { padding: 60px 24px 50px; }
+            .hero-page h1 { font-size: 32px; }
+            .hero-page p { font-size: 15px; }
+            .container { padding: 0 24px; }
+            .contact-section { padding: 50px 0; }
+            .contact-form-wrap { padding: 30px 24px; }
+            .form-row { grid-template-columns: 1fr; gap: 14px; margin-bottom: 14px; }
+            .map-section { padding: 0 0 50px; }
+            .map-wrap iframe { height: 300px; }
+            .footer-inner { grid-template-columns: 1fr; padding: 0 24px; }
+            .footer-bottom { padding: 20px 24px 0; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-page h1 { font-size: 26px; }
+            .facility-mini { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div>
+        <div class="top-bar-phone">
+            <span>📞</span>
+            <a href="tel:+916290662274">+91 6290 662 274</a>
+        </div>
+        <div class="top-bar-logo">
+            <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1783059499/EEPRON_LOGO.JPG_js6iok.jpg" alt="EEPRON Plywood Logo">
+        </div>
+        <button class="cta-button">GET FREE QUOTE</button>
+        <button class="ham-menu" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+    <div class="nav-wrapper">
+        <nav>
+            <ul>
+                <li><a href="https://www.eepronplywood.com/">HOME</a></li>
+                <li><a href="https://www.eepronplywood.com/about.html">ABOUT US</a></li>
+                <li><a href="https://www.eepronplywood.com/products.html">PRODUCTS</a></li>
+                <li><a href="https://www.eepronplywood.com/gallery.html">GALLERY</a></li>
+                <li><a href="https://www.eepronplywood.com/contact.html" class="active">CONTACT</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+    <a href="https://www.eepronplywood.com/" onclick="toggleMenu()">HOME</a>
+    <a href="https://www.eepronplywood.com/about.html" onclick="toggleMenu()">ABOUT US</a>
+    <a href="https://www.eepronplywood.com/products.html" onclick="toggleMenu()">PRODUCTS</a>
+    <a href="https://www.eepronplywood.com/gallery.html" onclick="toggleMenu()">GALLERY</a>
+    <a href="https://www.eepronplywood.com/contact.html" onclick="toggleMenu()">CONTACT</a>
+</div>
+
+<!-- HERO BANNER -->
+<section class="hero-page">
+    <div>
+        <h1>Contact Us</h1>
+        <p>Get in touch for factory-direct pricing, bulk orders, or a custom plywood quote — delivered straight to your godown.</p>
+    </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact-section">
+    <div class="container">
+        <div class="contact-grid">
+
+            <!-- INFO CARDS -->
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="info-icon">📍</div>
+                    <div>
+                        <h3>Head Office</h3>
+                        <p>EEPRON Plywood — United Enterprises<br>Street No. 194, CE Block (Newtown),<br>Action Area I, Kolkata, West Bengal</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">📞</div>
+                    <div>
+                        <h3>Call Us</h3>
+                        <p><a href="tel:+916290662274">+91 6290 662 274</a></p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">📧</div>
+                    <div>
+                        <h3>Email Us</h3>
+                        <p><a href="mailto:sales@eepronplywood.com">sales@eepronplywood.com</a></p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🕐</div>
+                    <div>
+                        <h3>Business Hours</h3>
+                        <p>Mon – Sat: 10:00 am – 07:00 pm<br>Sunday: Closed</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🏭</div>
+                    <div>
+                        <h3>Manufacturing Units</h3>
+                        <p>Two full calibrated plywood facilities serving customers pan-India.</p>
+                        <div class="facility-mini">
+                            <div class="facility-mini-item"><span>Unit 1</span><strong>Kolkata</strong></div>
+                            <div class="facility-mini-item"><span>Unit 2</span><strong>Lucknow</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FORM -->
+            <div class="contact-form-wrap">
+                <h2>Send Us a Message</h2>
+                <p>Fill in your details and our team will get back to you with a factory-direct quote.</p>
+                <form onsubmit="return false;">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="you@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="product">Product Interested In</label>
+                            <select id="product">
+                                <option>Eepron Marine</option>
+                                <option>Eepron Club</option>
+                                <option>Eepron Star</option>
+                                <option>Customized Plywood</option>
+                                <option>Shuttering Plywood</option>
+                                <option>Other / Not Sure</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" placeholder="Tell us about your requirement — grade, thickness, quantity, delivery location..."></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="form-submit">Send Enquiry</button>
+                    <p class="form-note">We typically respond within 24 business hours. For urgent enquiries, call or WhatsApp us directly.</p>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- MAP -->
+<section class="map-section">
+    <div class="container">
+        <div class="map-wrap">
+            <iframe
+                src="https://www.google.com/maps?q=CE+Block+Newtown+Action+Area+I+Kolkata+West+Bengal&output=embed"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-section">
+                <h3>EEPRON PLYWOOD</h3>
+                <p>A premium plywood manufacturing brand under United Enterprises, with factories in Kolkata &amp; Lucknow delivering full calibrated waterproof &amp; non-waterproof plywood across India.</p>
+            </div>
+            <div class="footer-section">
+                <h3>QUICK LINKS</h3>
+                <ul>
+                    <li><a href="https://www.eepronplywood.com/">Home</a></li>
+                    <li><a href="https://www.eepronplywood.com/about.html">About Us</a></li>
+                    <li><a href="https://www.eepronplywood.com/products.html">Products</a></li>
+                    <li><a href="https://www.eepronplywood.com/gallery.html">Gallery</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>CONTACT INFO</h3>
+                <ul>
+                    <li>Street No. 194, CE Block (Newtown), Action Area I, Kolkata, West Bengal</li>
+                    <li>📧 <a href="mailto:sales@eepronplywood.com">sales@eepronplywood.com</a></li>
+                    <li>📞 <a href="tel:+916290662274">+91 6290 662 274</a></li>
+                    <li><a href="https://eepronplywood.com" target="_blank">www.eepronplywood.com</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>BUSINESS HOURS</h3>
+                <ul>
+                    <li>Mon – Sat: 10:00 am – 07:00 pm</li>
+                    <li>Sunday: Closed</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2026 EEPRON PLYWOOD - All Rights Reserved. A United Enterprises Brand.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/916290662274" class="whatsapp-float" target="_blank" aria-label="Message us on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-1.732-.866-2.867-1.546-4.006-3.506-.302-.522.302-.484.864-1.612.095-.197.047-.371-.05-.52-.099-.149-.669-1.612-.916-2.207-.242-.578-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.05 3.13 4.974 4.26 2.926 1.131 2.926.755 3.45.71.526-.043 1.69-.69 1.93-1.36.235-.668.235-1.24.165-1.358-.07-.118-.272-.198-.57-.347zM12 2c5.523 0 10 4.477 10 10 0 5.523-4.477 10-10 10-1.79 0-3.466-.469-4.92-1.286l-5.08 1.286 1.285-5.08C2.469 15.466 2 13.79 2 12 2 6.477 6.477 2 12 2zm0 1.8c-4.529 0-8.2 3.671-8.2 8.2 0 1.633.477 3.155 1.301 4.434l.21.33-.708 2.797 2.797-.708.33.21A8.2 8.2 0 1 0 12 3.8z"/></svg>
+</a>
+
+<script>
+function toggleMenu() {
+    const mobileNav = document.getElementById('mobileNav');
+    const hamMenu = document.querySelector('.ham-menu');
+    mobileNav.classList.toggle('active');
+    hamMenu.classList.toggle('active');
+}
+</script>
+
+</body>
+</html>
