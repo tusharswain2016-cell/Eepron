@@ -466,8 +466,10 @@
         .service-card:hover { background: #2e1b09; }
         .service-card-image {
             height: 320px;
-            background-size: cover;
+            background-size: contain;
+            background-repeat: no-repeat;
             background-position: center;
+            background-color: #0f0803;
             transition: transform 0.5s ease;
             position: relative;
         }
@@ -476,7 +478,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom, transparent 40%, rgba(15,8,2,0.85) 100%);
+            background: linear-gradient(to bottom, transparent 70%, rgba(15,8,2,0.85) 100%);
         }
         .service-card-body {
             padding: 28px 32px 36px;
@@ -852,14 +854,6 @@
         @keyframes heroRise {
             to { opacity: 1; transform: translateY(0); }
         }
-        .hero-ticker {
-            transform: translateY(100%);
-            animation: tickerRise 0.7s 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
-        @keyframes tickerRise {
-            to { transform: translateY(0); }
-        }
-
         /* Tactile press feedback for tappable elements */
         .cta-button, .category-tab, .mobile-nav a, .service-card, .gallery-item, .ham-menu, .mobile-nav-close, .top-bar-phone a {
             transition: transform 0.18s ease, background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
@@ -1142,7 +1136,7 @@
             .hero h1 { font-size: 27px; }
             .hero-subtitle { font-size: 13px; }
             .hero-cta-section-left .cta-button { padding: 13px 24px; font-size: 12px; }
-            .review-number-left { font-size: 17px; }
+            .review-number-left { font-size: 15px; }
             .review-label-left { font-size: 12px; }
             .ticker-item { font-size: 10px; padding: 0 18px; }
 
@@ -1274,8 +1268,7 @@
         <div class="hero-cta-section-left">
             <button class="cta-button" onclick="location.href='https://www.eepronplywood.com/contact.html'">GET A QUOTE</button>
             <div class="hero-reviews-left">
-                <div class="review-number-left">2 units</div>
-                <div class="review-label-left">Kolkata</div>
+                <div class="review-number-left">Two Integrated Manufacturing Facilities</div>
             </div>
         </div>
     </div>
