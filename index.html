@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EEPRON Plywood — Premium Calibrated Plywood | Kolkata & Lucknow</title>
+    <title>EEPRON Plywood — Premium Calibrated Plywood | Kolkata</title>
     <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -277,11 +277,9 @@
         .review-number-left { font-size: 20px; font-weight: bold; color: #fff; }
         .review-label-left { font-size: 13px; color: #ddd; letter-spacing: 0.5px; }
 
-        /* ── HERO TICKER ── */
+        /* ── TICKER (sits below header) ── */
         .hero-ticker {
-            position: absolute;
-            bottom: 0;
-            left: 0;
+            position: relative;
             width: 100%;
             z-index: 3;
             background: #7a4d12;
@@ -965,20 +963,8 @@
                 flex: 0;
                 justify-content: flex-start;
             }
-            .top-bar-logo img { height: 42px; }
-            .top-bar-phone { font-size: 0; gap: 0; }
-            .top-bar-phone span { display: none; }
-            .top-bar-phone a {
-                width: 40px; height: 40px;
-                border: 1px solid rgba(255,255,255,0.25);
-                border-radius: 50%;
-                display: flex; align-items: center; justify-content: center;
-            }
-            .top-bar-phone a::before {
-                content: '📞';
-                font-size: 17px;
-                line-height: 1;
-            }
+            .top-bar-logo img { height: 60px; }
+            .top-bar-phone { display: none; }
             .cta-button { display: none; }
             .ham-menu {
                 display: flex;
@@ -1151,7 +1137,7 @@
         }
 
         @media (max-width: 480px) {
-            .top-bar-logo img { height: 36px; }
+            .top-bar-logo img { height: 50px; }
             .hero-content-left { padding: 0 18px; padding-bottom: 64px; }
             .hero h1 { font-size: 27px; }
             .hero-subtitle { font-size: 13px; }
@@ -1222,6 +1208,36 @@
     </div>
 </header>
 
+<!-- TICKER -->
+<div class="hero-ticker">
+    <div class="hero-ticker-track">
+        <!-- First set -->
+        <span class="ticker-item">Immune to Microbes <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Water Proof <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Termite Proof <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Immune to Microbes <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Water Proof <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Termite Proof <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Full Calibrated Boards <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Factory Direct Supply <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Immune to Microbes <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Water Proof <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Termite Proof <span class="ticker-dot"></span></span>
+        <!-- Duplicate for seamless loop -->
+        <span class="ticker-item">Immune to Microbes <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Water Proof <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Termite Proof <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Immune to Microbes <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Water Proof <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Termite Proof <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Full Calibrated Boards <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Factory Direct Supply <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Immune to Microbes <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Water Proof <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Termite Proof <span class="ticker-dot"></span></span>
+    </div>
+</div>
+
 <!-- MOBILE NAV BACKDROP -->
 <div class="mobile-nav-backdrop" id="mobileNavBackdrop" onclick="toggleMenu()"></div>
 
@@ -1263,35 +1279,6 @@
             </div>
         </div>
     </div>
-    <!-- TICKER -->
-    <div class="hero-ticker">
-        <div class="hero-ticker-track">
-            <!-- First set -->
-            <span class="ticker-item">Immune to Microbes <span class="ticker-dot"></span></span>
-            <span class="ticker-item">Water Proof <span class="ticker-dot"></span></span>
-            <span class="ticker-item">Termite Proof <span class="ticker-dot"></span></span>
-            <span class="ticker-item">Immune to Microbes <span class="ticker-dot"></span></span>
-            <span class="ticker-item">Water Proof <span class="ticker-dot"></span></span>
-            <span class="ticker-item">Termite Proof <span class="ticker-dot"></span></span>
-            <span class="ticker-item">Full Calibrated Boards <span class="ticker-dot"></span></span>
-            <span class="ticker-item">Factory Direct Supply <span class="ticker-dot"></span></span>
-            <span class="ticker-item">Immune to Microbes <span class="ticker-dot"></span></span>
-            <span class="ticker-item">Water Proof <span class="ticker-dot"></span></span>
-            <span class="ticker-item">Termite Proof <span class="ticker-dot"></span></span>
-            <!-- Duplicate for seamless loop -->
-            <span class="ticker-item">Immune to Microbes <span class="ticker-dot"></span></span>
-            <span class="ticker-item">Water Proof <span class="ticker-dot"></span></span>
-            <span class="ticker-item">Termite Proof <span class="ticker-dot"></span></span>
-            <span class="ticker-item">Immune to Microbes <span class="ticker-dot"></span></span>
-            <span class="ticker-item">Water Proof <span class="ticker-dot"></span></span>
-            <span class="ticker-item">Termite Proof <span class="ticker-dot"></span></span>
-            <span class="ticker-item">Full Calibrated Boards <span class="ticker-dot"></span></span>
-            <span class="ticker-item">Factory Direct Supply <span class="ticker-dot"></span></span>
-            <span class="ticker-item">Immune to Microbes <span class="ticker-dot"></span></span>
-            <span class="ticker-item">Water Proof <span class="ticker-dot"></span></span>
-            <span class="ticker-item">Termite Proof <span class="ticker-dot"></span></span>
-        </div>
-    </div>
 </section>
 
 <!-- TRUST -->
@@ -1325,7 +1312,7 @@
         </div>
         <h2>EEPRON PLYWOOD — A UNITED ENTERPRISES BRAND</h2>
         <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1784530887/f4f8848f-8d6f-4cb9-9a7a-c932b1f672fc_oyhuew.jpg" alt="EEPRON Plywood factory" class="about-mobile-photo">
-        <p>EEPRON Plywood is a premium plywood manufacturing brand under United Enterprises, committed to delivering superior quality wood panel solutions across India. With state-of-the-art manufacturing units in Kolkata and Lucknow, we produce full calibrated waterproof and non-waterproof plywood that's built to perform.</p>
+        <p>EEPRON Plywood is a premium plywood manufacturing brand under United Enterprises, committed to delivering superior quality wood panel solutions across India. With a state-of-the-art manufacturing unit in Kolkata, we produce full calibrated waterproof and non-waterproof plywood that's built to perform.</p>
         <button class="cta-button" style="background:var(--accent-cream);color:var(--text-dark);align-self:flex-start;padding:15px 40px;" onclick="location.href='https://www.eepronplywood.com/about.html'">FIND OUT MORE</button>
     </div>
     <div class="about-icons" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782285955/66492864-d8fd-4ed8-90c4-14261e2c95be_1_sbhphv.jpg');">
@@ -1335,8 +1322,8 @@
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
                 </svg>
             </div>
-            <h3>TWO MANUFACTURING UNITS</h3>
-            <p>State-of-the-art plywood factories in Kolkata &amp; Lucknow.</p>
+            <h3>STATE-OF-THE-ART FACTORY</h3>
+            <p>Modern plywood manufacturing unit in Kolkata.</p>
         </div>
         <div class="icon-block">
             <div class="icon-box">
@@ -1637,7 +1624,7 @@
     <div class="certifications-inner">
         <div class="certification-item">
             <h3>FACTORY CERTIFIED</h3>
-            <p>Manufactured in our own ISO-9001:2015 compliant units in Kolkata &amp; Lucknow under strict quality control</p>
+            <p>Manufactured in our own ISO-9001:2015 compliant unit in Kolkata under strict quality control</p>
             <div class="iso-badge">ISO 9001:2015 CERTIFIED</div>
         </div>
         <div class="certification-item">
@@ -1672,7 +1659,7 @@
                 <div class="testimonial-author-row">
                     <div class="testimonial-author">
                         Rajeev Sharma
-                        <span>Furniture Manufacturer, Lucknow</span>
+                        <span>Furniture Manufacturer</span>
                     </div>
                 </div>
             </div>
@@ -1727,7 +1714,7 @@
     <div class="footer-inner">
         <div class="footer-section">
             <h3>EEPRON PLYWOOD</h3>
-            <p>A premium plywood manufacturing brand under United Enterprises, with factories in Kolkata &amp; Lucknow delivering full calibrated waterproof &amp; non-waterproof plywood across India.</p>
+            <p>A premium plywood manufacturing brand under United Enterprises, with a factory in Kolkata delivering full calibrated waterproof &amp; non-waterproof plywood across India.</p>
         </div>
         <div class="footer-section">
             <h3>QUICK LINKS</h3>
