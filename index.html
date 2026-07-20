@@ -967,12 +967,17 @@
             }
             .top-bar-logo img { height: 42px; }
             .top-bar-phone { font-size: 0; gap: 0; }
-            .top-bar-phone span { font-size: 20px; }
+            .top-bar-phone span { display: none; }
             .top-bar-phone a {
                 width: 40px; height: 40px;
                 border: 1px solid rgba(255,255,255,0.25);
                 border-radius: 50%;
                 display: flex; align-items: center; justify-content: center;
+            }
+            .top-bar-phone a::before {
+                content: '📞';
+                font-size: 17px;
+                line-height: 1;
             }
             .cta-button { display: none; }
             .ham-menu {
