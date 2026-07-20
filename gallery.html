@@ -1,634 +1,409 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery — EEPRON Plywood | Factory & Product Showcase</title>
-    <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery | Pitabash Enterprises</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#152a4a;
+    --navy-soft:#2c4468;
+    --teal:#1c5d78;
+    --teal-dark:#134759;
+    --orange:#f2801f;
+    --cream:#fbf9f5;
+    --grey:#6c7688;
+    --line:#e8e6df;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Jost','Segoe UI',-apple-system,BlinkMacSystemFont,sans-serif;
+    color:var(--navy);
+    background:var(--cream);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Jost',sans-serif; font-weight:700; color:var(--navy); line-height:1.15;}
+  a{text-decoration:none; color:inherit;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
 
-        body {
-            font-family: 'Saira Condensed', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #fff;
-        }
+  /* HEADER */
+  header{padding:14px 0;}
+  .header-inner{display:flex; align-items:center; justify-content:space-between;}
+  .logo img{height:88px; width:auto;}
+  nav{display:flex; gap:38px; font-size:15px; font-weight:500; color:var(--navy-soft);}
+  nav a{position:relative; padding-bottom:4px;}
+  nav a.active{color:var(--navy); font-weight:700;}
+  nav a.active::after{content:""; position:absolute; left:0; bottom:0; width:100%; height:2px; background:var(--orange);}
+  .hamburger{
+    display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px; z-index:50;
+  }
+  .hamburger span{width:26px; height:2.5px; background:var(--navy); border-radius:2px; transition:transform .25s ease, opacity .25s ease;}
+  .hamburger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
+  .hamburger.open span:nth-child(2){opacity:0;}
+  .hamburger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
 
-        :root {
-            --primary-dark: #4a2e1a;
-            --primary-light: #8a5a2e;
-            --accent-cream: #f5ede0;
-            --accent-gold: #d99c2b;
-            --text-dark: #2a1f15;
-            --container-max: 1200px;
-        }
+  /* PAGE BANNER */
+  .page-banner{
+    position:relative; height:260px; overflow:hidden;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+  }
+  .page-banner img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+  .page-banner::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(0deg, rgba(21,42,74,.82), rgba(21,42,74,.6));
+  }
+  .banner-inner{position:relative; z-index:2; color:#fff;}
+  .banner-inner h1{color:#fff; font-size:42px; margin-bottom:10px;}
+  .breadcrumb{font-size:14px; color:#dbe3ee;}
+  .breadcrumb a{color:#fff; font-weight:600;}
+  .breadcrumb span{margin:0 8px; opacity:.6;}
 
-        /* ── HEADER ── */
-        header {
-            background: var(--primary-dark);
-            position: relative;
-            width: 100%;
-        }
-        header > div:first-child {
-            background: transparent;
-            padding: 20px 80px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255,255,255,0.15);
-        }
-        .top-bar-phone {
-            color: #fff;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .top-bar-phone a { color: #fff; text-decoration: none; font-weight: 700; }
-        .top-bar-logo { flex: 1; display: flex; justify-content: center; }
-        .top-bar-logo img { height: 72px; display: block; }
-        .nav-wrapper { margin: 0 80px; border: 1px solid rgba(255,255,255,0.2); display: flex; }
-        nav { width: 100%; }
-        nav ul { display: flex; list-style: none; gap: 0; margin: 0; }
-        nav li { flex: 1; text-align: center; border-right: 1px solid rgba(255,255,255,0.15); }
-        nav li:last-child { border-right: none; }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 12px;
-            letter-spacing: 1.5px;
-            display: block;
-            font-weight: 700;
-            padding: 18px 10px;
-            transition: all 0.3s;
-        }
-        nav a:hover { color: var(--accent-gold); background: rgba(217,156,43,0.1); }
-        .cta-button {
-            background: var(--accent-gold);
-            color: white;
-            padding: 12px 35px;
-            border: none;
-            font-size: 13px;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: background 0.3s;
-            display: inline-block;
-            font-family: 'Saira Condensed', sans-serif;
-            font-weight: 700;
-        }
-        .cta-button:hover { background: #b87f1f; }
+  /* FILTERS */
+  .filters{padding:50px 0 10px; text-align:center;}
+  .filters .sub{color:var(--grey); font-size:15.5px; max-width:540px; margin:0 auto 30px;}
+  .filter-tabs{display:flex; justify-content:center; gap:12px; flex-wrap:wrap;}
+  .filter-tab{
+    padding:10px 22px; border-radius:30px; border:1px solid var(--line); background:#fff;
+    font-size:14px; font-weight:600; color:var(--navy-soft); cursor:pointer; transition:all .2s ease;
+  }
+  .filter-tab:hover{border-color:var(--teal-dark); color:var(--teal-dark);}
+  .filter-tab.active{background:var(--teal-dark); color:#fff; border-color:var(--teal-dark);}
 
-        /* ── HAMBURGER MENU ── */
-        .ham-menu {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 10px;
-            z-index: 1001;
-        }
-        .ham-menu span {
-            width: 25px;
-            height: 2.5px;
-            background: #fff;
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-        .ham-menu.active span:nth-child(1) { transform: rotate(45deg) translateY(10px); }
-        .ham-menu.active span:nth-child(2) { opacity: 0; }
-        .ham-menu.active span:nth-child(3) { transform: rotate(-45deg) translateY(-10px); }
+  /* GALLERY GRID */
+  .gallery-section{padding:40px 0 90px;}
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    grid-auto-rows:190px;
+    gap:16px;
+  }
+  .gallery-item{
+    border-radius:12px; overflow:hidden; position:relative; cursor:pointer;
+    opacity:0; animation:fadeIn .5s ease forwards;
+  }
+  .gallery-item img{width:100%; height:100%; object-fit:cover; transition:transform .4s ease;}
+  .gallery-item:hover img{transform:scale(1.08);}
+  .gallery-item.tall{grid-row:span 2;}
+  .gallery-item.wide{grid-column:span 2;}
+  .gallery-item .tag{
+    position:absolute; left:12px; bottom:12px; z-index:2; color:#fff; font-size:12.5px; font-weight:600;
+    background:rgba(21,42,74,.55); padding:5px 12px; border-radius:20px; backdrop-filter:blur(2px);
+  }
+  .gallery-item.hidden{display:none;}
+  @keyframes fadeIn{ to{opacity:1;} }
 
-        /* ── MOBILE NAV ── */
-        .mobile-nav {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.95);
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        .mobile-nav.active { display: flex; }
-        .mobile-nav a {
-            color: #fff;
-            font-size: 24px;
-            text-decoration: none;
-            margin: 20px 0;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
-        .mobile-nav a:hover { color: var(--accent-gold); }
+  /* LIGHTBOX */
+  .lightbox{
+    position:fixed; inset:0; background:rgba(21,42,74,.92); z-index:100;
+    display:none; align-items:center; justify-content:center; padding:40px;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:90vw; max-height:85vh; border-radius:8px; box-shadow:0 20px 60px rgba(0,0,0,.4);}
+  .lightbox-close{
+    position:absolute; top:26px; right:34px; color:#fff; font-size:34px; cursor:pointer; line-height:1;
+  }
+  .lightbox-nav{
+    position:absolute; top:50%; transform:translateY(-50%); color:#fff; font-size:38px; cursor:pointer;
+    width:50px; height:50px; display:flex; align-items:center; justify-content:center;
+  }
+  .lightbox-nav.prev{left:16px;}
+  .lightbox-nav.next{right:16px;}
 
-        /* ── HERO BANNER ── */
-        .hero-page {
-            height: 50vh;
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            text-align: center;
-            padding: 80px 80px 60px;
-        }
-        .hero-page h1 {
-            font-size: 60px;
-            font-weight: 900;
-            margin-bottom: 18px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        .hero-page p {
-            font-size: 17px;
-            max-width: 650px;
-            margin: 0 auto;
-            opacity: 0.95;
-            line-height: 1.7;
-        }
+  /* CTA */
+  .cta{background:var(--navy); padding:60px 0; text-align:center;}
+  .cta h2{color:#fff; font-size:30px; margin-bottom:14px;}
+  .cta p{color:#c7d0dd; font-size:15.5px; margin-bottom:28px;}
+  .btn{
+    display:inline-block; padding:16px 34px; border-radius:6px; font-size:15px; font-weight:600;
+    background:var(--orange); color:#fff;
+  }
 
-        /* ── CONTAINER ── */
-        .container {
-            max-width: var(--container-max);
-            margin: 0 auto;
-            padding: 0 80px;
-        }
-        @media (max-width: 900px) { .container { padding: 0 40px; } }
-        @media (max-width: 480px) { .container { padding: 0 20px; } }
+  /* FOOTER */
+  footer{background:var(--navy); color:#c7d0dd; padding:70px 0 26px;}
+  .foot-grid{display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:40px; margin-bottom:50px;}
+  .foot-logo img{height:64px; width:auto; margin-bottom:20px;}
+  footer p{font-size:14.5px; line-height:1.8; color:#a9b4c5; max-width:280px;}
+  .foot-contact{display:flex; align-items:center; gap:10px; margin-top:16px; font-size:14.5px; color:#c7d0dd;}
+  footer h4{color:#fff; font-family:'Jost',sans-serif; font-weight:700; font-size:17px; margin-bottom:22px;}
+  .foot-links{display:flex; flex-direction:column; gap:14px;}
+  .foot-links a{font-size:14.5px; color:#a9b4c5; display:flex; align-items:center; gap:6px;}
+  .foot-links a:hover{color:#fff;}
+  .foot-bottom{
+    border-top:1px solid rgba(255,255,255,.12); padding-top:24px;
+    display:flex; justify-content:space-between; align-items:center; font-size:13.5px; color:#8ea0b8;
+  }
+  .socials{display:flex; gap:14px;}
+  .socials span{
+    width:30px;height:30px;border:1px solid rgba(255,255,255,.25); border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-size:12px; color:#c7d0dd;
+  }
 
-        .gallery-section { padding: 90px 0; background: #fff; }
-
-        /* ── GALLERY GRID ── */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-        }
-        .gallery-item {
-            background-size: cover;
-            background-position: center;
-            border-radius: 4px;
-            cursor: pointer;
-            overflow: hidden;
-            position: relative;
-        }
-        .gallery-item::after {
-            content: '';
-            display: block;
-            padding-bottom: 100%;
-        }
-        .gallery-item-inner {
-            position: absolute; inset: 0;
-            background-size: cover; background-position: center;
-            transition: transform 0.4s ease;
-        }
-        .gallery-item:hover .gallery-item-inner { transform: scale(1.06); }
-        .gallery-item-overlay {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: flex-end;
-            justify-content: flex-start;
-            background: linear-gradient(to top, rgba(15,8,2,0.75) 0%, transparent 55%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            padding: 16px;
-        }
-        .gallery-item:hover .gallery-item-overlay { opacity: 1; }
-        .gallery-item-tag {
-            color: #fff;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-        }
-        .gallery-item.video-item .gallery-item-overlay {
-            opacity: 1;
-            background: rgba(0,0,0,0.25);
-            align-items: center;
-            justify-content: center;
-        }
-        .gallery-item.video-item:hover .gallery-item-overlay { background: rgba(0,0,0,0.4); }
-        .gallery-play-icon {
-            width: 60px; height: 60px; border-radius: 50%;
-            background: rgba(217, 156, 43, 0.9);
-            color: #fff; font-size: 26px;
-            display: flex; align-items: center; justify-content: center;
-            transition: transform 0.3s ease;
-        }
-        .gallery-item.video-item:hover .gallery-play-icon { transform: scale(1.1); }
-
-        /* ── VIDEO LIGHTBOX ── */
-        .video-lightbox {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95);
-            z-index: 500;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        .video-lightbox.active { display: flex; }
-        .video-lightbox-content { position: relative; max-width: 90vw; max-height: 90vh; }
-        .video-lightbox video { max-width: 90vw; max-height: 85vh; border-radius: 8px; }
-        .video-lightbox-close {
-            position: absolute; top: -45px; right: 0;
-            font-size: 32px; color: #fff; cursor: pointer;
-            background: none; border: none;
-        }
-        .video-lightbox-close:hover { color: var(--accent-gold); }
-
-        /* ── IMAGE LIGHTBOX ── */
-        .image-lightbox {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95);
-            z-index: 500;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        .image-lightbox.active { display: flex; }
-        .image-lightbox-content { position: relative; max-width: 90vw; max-height: 90vh; }
-        .image-lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 8px; display: block; }
-        .image-lightbox-close {
-            position: absolute; top: -45px; right: 0;
-            font-size: 32px; color: #fff; cursor: pointer;
-            background: none; border: none;
-        }
-        .image-lightbox-close:hover { color: var(--accent-gold); }
-
-        /* ── CTA SECTION ── */
-        .cta-section {
-            text-align: center;
-            padding: 20px 0 90px;
-        }
-        .cta-section h2 {
-            font-size: 38px;
-            font-weight: 900;
-            margin-bottom: 18px;
-            color: var(--text-dark);
-        }
-        .cta-section p {
-            font-size: 15px;
-            color: #666;
-            margin-bottom: 35px;
-            max-width: 560px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .cta-btn-primary {
-            background: var(--accent-gold);
-            color: white;
-            padding: 16px 45px;
-            border: none;
-            font-size: 14px;
-            letter-spacing: 1px;
-            cursor: pointer;
-            font-family: 'Saira Condensed', sans-serif;
-            font-weight: 700;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .cta-btn-primary:hover { background: #b87f1f; transform: translateY(-2px); }
-
-        /* ── FOOTER ── */
-        footer {
-            background: #2e1c10;
-            color: #ddd;
-            padding: 60px 0 30px;
-        }
-        .footer-inner {
-            display: grid;
-            grid-template-columns: 2fr 1fr 2fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        .footer-section h3 {
-            color: #fff;
-            margin-bottom: 15px;
-            font-size: 14px;
-            letter-spacing: 1px;
-        }
-        .footer-section ul { list-style: none; }
-        .footer-section ul li { margin-bottom: 10px; font-size: 13px; }
-        .footer-section a { color: #ddd; text-decoration: none; transition: color 0.3s; }
-        .footer-section a:hover { color: var(--accent-gold); }
-        .footer-section p { font-size: 13px; line-height: 1.8; }
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding: 20px 80px 0;
-            text-align: center;
-            font-size: 12px;
-            color: #999;
-        }
-
-        /* ── WHATSAPP ── */
-        .whatsapp-float {
-            position: fixed; bottom: 25px; right: 25px; z-index: 200;
-            background: #25D366; width: 58px; height: 58px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.3); text-decoration: none; transition: transform 0.3s;
-        }
-        .whatsapp-float:hover { transform: scale(1.08); }
-        .whatsapp-float svg { width: 30px; height: 30px; fill: #fff; }
-
-        /* ── RESPONSIVE ── */
-        @media (max-width: 1024px) {
-            .gallery-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-
-        @media (max-width: 768px) {
-            header > div:first-child {
-                padding: 15px 20px;
-                flex-wrap: wrap;
-                justify-content: space-between;
-                border-bottom: 1px solid rgba(255,255,255,0.15);
-            }
-            .nav-wrapper { display: none; margin: 0; border: none; }
-            .top-bar-logo { flex: 0; }
-            .top-bar-logo img { height: 40px; }
-            .cta-button { display: none; }
-            .ham-menu { display: flex; }
-            .hero-page {
-                height: auto;
-                padding: 60px 24px 50px;
-            }
-            .hero-page h1 { font-size: 34px; }
-            .hero-page p { font-size: 15px; }
-            .container { padding: 0 24px; }
-            .gallery-section { padding: 50px 0; }
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-            .cta-section h2 { font-size: 28px; }
-            .footer-inner { grid-template-columns: 1fr; padding: 0 24px; }
-            .footer-bottom { padding: 20px 24px 0; }
-        }
-
-        @media (max-width: 480px) {
-            .hero-page { padding: 50px 20px 40px; }
-            .hero-page h1 { font-size: 26px; }
-            .gallery-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-        }
-    </style>
+  @media(max-width:940px){
+    nav{
+      display:none; position:absolute; top:100%; left:0; right:0; background:#fff;
+      flex-direction:column; gap:0; padding:10px 0; box-shadow:0 12px 24px rgba(21,42,74,.12); z-index:40;
+    }
+    nav.open{display:flex;}
+    nav a{padding:14px 32px; width:100%;}
+    nav a.active::after{display:none;}
+    nav a.active{background:#f3f5f2;}
+    .hamburger{display:flex;}
+    header{position:relative;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+    .banner-inner h1{font-size:30px;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:150px;}
+    .gallery-item.wide{grid-column:span 2;}
+  }
+</style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
-    <div>
-        <div class="top-bar-phone">
-            <span>📞</span>
-            <a href="tel:+916290662274">+91 6290 662 274</a>
-        </div>
-        <div class="top-bar-logo">
-            <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1783059499/EEPRON_LOGO.JPG_js6iok.jpg" alt="EEPRON Plywood Logo">
-        </div>
-        <button class="cta-button" onclick="location.href='https://www.eepronplywood.com/contact.html'">GET FREE QUOTE</button>
-        <button class="ham-menu" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+  <div class="wrap header-inner">
+    <div class="logo">
+      <img src="https://orchid-hippopotamus-237502.hostingersite.com/wp-content/uploads/2026/07/6f3552e7-ed33-4e20-9df2-e459625993d7-e1784097760874.png" alt="PEPL logo">
     </div>
-    <div class="nav-wrapper">
-        <nav>
-            <ul>
-                <li><a href="https://www.eepronplywood.com/">HOME</a></li>
-                <li><a href="https://www.eepronplywood.com/about.html">ABOUT US</a></li>
-                <li><a href="https://www.eepronplywood.com/products.html">PRODUCTS</a></li>
-                <li><a href="https://www.eepronplywood.com/gallery.html">GALLERY</a></li>
-                <li><a href="https://www.eepronplywood.com/contact.html">CONTACT</a></li>
-            </ul>
-        </nav>
-    </div>
+    <nav id="mainNav">
+      <a href="pitabash-enterprises.html">Home</a>
+      <a href="gallery.html" class="active">Gallery</a>
+      <a href="pitabash-enterprises.html#contact">Contact</a>
+      <a href="about.html">About</a>
+    </nav>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </header>
 
-<!-- MOBILE NAV -->
-<div class="mobile-nav" id="mobileNav">
-    <a href="https://www.eepronplywood.com/" onclick="toggleMenu()">HOME</a>
-    <a href="https://www.eepronplywood.com/about.html" onclick="toggleMenu()">ABOUT US</a>
-    <a href="https://www.eepronplywood.com/products.html" onclick="toggleMenu()">PRODUCTS</a>
-    <a href="https://www.eepronplywood.com/gallery.html" onclick="toggleMenu()">GALLERY</a>
-    <a href="https://www.eepronplywood.com/contact.html" onclick="toggleMenu()">CONTACT</a>
-</div>
-
-<!-- HERO BANNER -->
-<section class="hero-page">
-    <div>
-        <h1>Our Gallery</h1>
-        <p>A look inside EEPRON's manufacturing units in Kolkata &amp; Lucknow — from raw veneer to full calibrated boards, ready for your godown.</p>
-    </div>
+<section class="page-banner">
+  <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1784284116/WhatsApp_Image_2026-07-08_at_08.11.36_kheia3.jpg" alt="Pitabash Enterprises Gallery">
+  <div class="banner-inner">
+    <h1>Our Gallery</h1>
+    <div class="breadcrumb"><a href="pitabash-enterprises.html">Home</a><span>/</span>Gallery</div>
+  </div>
 </section>
 
-<!-- GALLERY -->
+<section class="filters">
+  <div class="wrap">
+    <p class="sub">A look inside the play spaces, crèches, learning corners, and stores Pitabash Enterprises has brought to life across Odisha.</p>
+    <div class="filter-tabs" id="filterTabs">
+      <button class="filter-tab active" data-filter="all">All</button>
+      <button class="filter-tab" data-filter="play">Play Spaces</button>
+      <button class="filter-tab" data-filter="store">Stores</button>
+      <button class="filter-tab" data-filter="design">Design Concepts</button>
+      <button class="filter-tab" data-filter="raikala">Raikala Anganwadi Kendra</button>
+    </div>
+  </div>
+</section>
+
 <section class="gallery-section">
-    <div class="container">
-        <div class="gallery-grid" id="galleryGrid">
-            <div class="gallery-item" data-cat="factory" onclick="openImageModal('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286770/9a1c3d87-7142-4ea8-acf5-e81c748898c9_hevlxz.jpg')">
-                <div class="gallery-item-inner" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286770/9a1c3d87-7142-4ea8-acf5-e81c748898c9_hevlxz.jpg');"></div>
-                <div class="gallery-item-overlay"><span class="gallery-item-tag">Factory</span></div>
-            </div>
-            <div class="gallery-item" data-cat="factory" onclick="openImageModal('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286769/650ab6a6-e818-4d3b-8dda-936049ca41de_csyqt9.jpg')">
-                <div class="gallery-item-inner" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286769/650ab6a6-e818-4d3b-8dda-936049ca41de_csyqt9.jpg');"></div>
-                <div class="gallery-item-overlay"><span class="gallery-item-tag">Factory</span></div>
-            </div>
-            <div class="gallery-item" data-cat="factory" onclick="openImageModal('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286768/02da8045-476d-49d1-aa1a-ddb63fa4631a_wi6a2y.jpg')">
-                <div class="gallery-item-inner" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286768/02da8045-476d-49d1-aa1a-ddb63fa4631a_wi6a2y.jpg');"></div>
-                <div class="gallery-item-overlay"><span class="gallery-item-tag">Factory</span></div>
-            </div>
-            <div class="gallery-item" data-cat="factory" onclick="openImageModal('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286767/ec71429b-3aa4-41f0-8e2a-8bfeef590066_mmdxw9.jpg')">
-                <div class="gallery-item-inner" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286767/ec71429b-3aa4-41f0-8e2a-8bfeef590066_mmdxw9.jpg');"></div>
-                <div class="gallery-item-overlay"><span class="gallery-item-tag">Factory</span></div>
-            </div>
-            <div class="gallery-item" data-cat="factory" onclick="openImageModal('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286767/41f98deb-4789-4945-8ac0-d9bc1336adf2_qfab5j.jpg')">
-                <div class="gallery-item-inner" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286767/41f98deb-4789-4945-8ac0-d9bc1336adf2_qfab5j.jpg');"></div>
-                <div class="gallery-item-overlay"><span class="gallery-item-tag">Factory</span></div>
-            </div>
-            <div class="gallery-item" data-cat="factory" onclick="openImageModal('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286767/39d35604-0440-4baa-99d1-4f260ca4998d_syvqbj.jpg')">
-                <div class="gallery-item-inner" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782286767/39d35604-0440-4baa-99d1-4f260ca4998d_syvqbj.jpg');"></div>
-                <div class="gallery-item-overlay"><span class="gallery-item-tag">Factory</span></div>
-            </div>
-            <div class="gallery-item" data-cat="products" onclick="openImageModal('https://res.cloudinary.com/dey4zikfh/image/upload/v1783581778/431a527b-3cfe-4fe9-954c-4d6973b19b2f_c2jqfg.jpg')">
-                <div class="gallery-item-inner" style="background-image:url('https://res.cloudinary.com/dey4zikfh/image/upload/v1783581778/431a527b-3cfe-4fe9-954c-4d6973b19b2f_c2jqfg.jpg');"></div>
-                <div class="gallery-item-overlay"><span class="gallery-item-tag">Products</span></div>
-            </div>
-            <div class="gallery-item" data-cat="products" onclick="openImageModal('https://res.cloudinary.com/dey4zikfh/image/upload/v1783581775/72b532cf-bb35-42e6-a3be-72af88f641c7_qmvvuv.jpg')">
-                <div class="gallery-item-inner" style="background-image:url('https://res.cloudinary.com/dey4zikfh/image/upload/v1783581775/72b532cf-bb35-42e6-a3be-72af88f641c7_qmvvuv.jpg');"></div>
-                <div class="gallery-item-overlay"><span class="gallery-item-tag">Products</span></div>
-            </div>
-            <div class="gallery-item" data-cat="products" onclick="openImageModal('https://res.cloudinary.com/dey4zikfh/image/upload/v1783581775/b07dc05b-6afb-4032-88e4-b2989dfe6670_uwlrue.jpg')">
-                <div class="gallery-item-inner" style="background-image:url('https://res.cloudinary.com/dey4zikfh/image/upload/v1783581775/b07dc05b-6afb-4032-88e4-b2989dfe6670_uwlrue.jpg');"></div>
-                <div class="gallery-item-overlay"><span class="gallery-item-tag">Products</span></div>
-            </div>
-            <div class="gallery-item" data-cat="products" onclick="openImageModal('https://res.cloudinary.com/dey4zikfh/image/upload/v1783581773/c86a3495-9daa-442d-8084-a7d5f00e4702_i6jmgv.jpg')">
-                <div class="gallery-item-inner" style="background-image:url('https://res.cloudinary.com/dey4zikfh/image/upload/v1783581773/c86a3495-9daa-442d-8084-a7d5f00e4702_i6jmgv.jpg');"></div>
-                <div class="gallery-item-overlay"><span class="gallery-item-tag">Products</span></div>
-            </div>
-            <div class="gallery-item" data-cat="products" onclick="openImageModal('https://res.cloudinary.com/dey4zikfh/image/upload/v1783581773/3ca46b9e-2596-4488-bdc4-e730b81b6936_h1iyvx.jpg')">
-                <div class="gallery-item-inner" style="background-image:url('https://res.cloudinary.com/dey4zikfh/image/upload/v1783581773/3ca46b9e-2596-4488-bdc4-e730b81b6936_h1iyvx.jpg');"></div>
-                <div class="gallery-item-overlay"><span class="gallery-item-tag">Products</span></div>
-            </div>
-            <div class="gallery-item" data-cat="products" onclick="openImageModal('https://res.cloudinary.com/dey4zikfh/image/upload/v1783581772/3a651b14-ea9c-4fd7-b902-406f51454583_osgjcs.jpg')">
-                <div class="gallery-item-inner" style="background-image:url('https://res.cloudinary.com/dey4zikfh/image/upload/v1783581772/3a651b14-ea9c-4fd7-b902-406f51454583_osgjcs.jpg');"></div>
-                <div class="gallery-item-overlay"><span class="gallery-item-tag">Products</span></div>
-            </div>
-            <div class="gallery-item" data-cat="products" onclick="openImageModal('https://res.cloudinary.com/dey4zikfh/image/upload/v1783581771/841af8de-025f-4648-a383-905794267db6_yv6pwl.jpg')">
-                <div class="gallery-item-inner" style="background-image:url('https://res.cloudinary.com/dey4zikfh/image/upload/v1783581771/841af8de-025f-4648-a383-905794267db6_yv6pwl.jpg');"></div>
-                <div class="gallery-item-overlay"><span class="gallery-item-tag">Products</span></div>
-            </div>
-            <div class="gallery-item" data-cat="products" onclick="openImageModal('https://res.cloudinary.com/dey4zikfh/image/upload/v1783581771/dbc8083a-8f11-4f40-8191-b4de4011b5bf_k5pdvy.jpg')">
-                <div class="gallery-item-inner" style="background-image:url('https://res.cloudinary.com/dey4zikfh/image/upload/v1783581771/dbc8083a-8f11-4f40-8191-b4de4011b5bf_k5pdvy.jpg');"></div>
-                <div class="gallery-item-overlay"><span class="gallery-item-tag">Products</span></div>
-            </div>
-            <div class="gallery-item" data-cat="products" onclick="openImageModal('https://res.cloudinary.com/dey4zikfh/image/upload/v1783581770/dfbec039-6f5b-4b63-bdc8-63752a321945_fntbe2.jpg')">
-                <div class="gallery-item-inner" style="background-image:url('https://res.cloudinary.com/dey4zikfh/image/upload/v1783581770/dfbec039-6f5b-4b63-bdc8-63752a321945_fntbe2.jpg');"></div>
-                <div class="gallery-item-overlay"><span class="gallery-item-tag">Products</span></div>
-            </div>
-            <div class="gallery-item" data-cat="products" onclick="openImageModal('https://res.cloudinary.com/dey4zikfh/image/upload/v1783581769/2e20e328-8430-428c-8f77-0d3c416dcbe9_twjkk0.jpg')">
-                <div class="gallery-item-inner" style="background-image:url('https://res.cloudinary.com/dey4zikfh/image/upload/v1783581769/2e20e328-8430-428c-8f77-0d3c416dcbe9_twjkk0.jpg');"></div>
-                <div class="gallery-item-overlay"><span class="gallery-item-tag">Products</span></div>
-            </div>
-            <div class="gallery-item" data-cat="products" onclick="openImageModal('https://res.cloudinary.com/dey4zikfh/image/upload/v1783581768/8fbe4577-762f-485b-a023-f5a3c0e3e691_muriuw.jpg')">
-                <div class="gallery-item-inner" style="background-image:url('https://res.cloudinary.com/dey4zikfh/image/upload/v1783581768/8fbe4577-762f-485b-a023-f5a3c0e3e691_muriuw.jpg');"></div>
-                <div class="gallery-item-overlay"><span class="gallery-item-tag">Products</span></div>
-            </div>
-            <div class="gallery-item video-item" data-cat="video" onclick="openVideoModal('https://res.cloudinary.com/dey4zikfh/video/upload/v1782982871/0702_1_1_uznyxr.mp4')">
-                <div class="gallery-item-inner" style="background-image:url('https://res.cloudinary.com/dey4zikfh/video/upload/v1782982871/0702_1_1_uznyxr.jpg');"></div>
-                <div class="gallery-item-overlay">
-                    <span class="gallery-play-icon">▶</span>
-                </div>
-            </div>
-        </div>
+  <div class="wrap">
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item tall" data-cat="play">
+        <img src="https://orchid-hippopotamus-237502.hostingersite.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2026-07-07-at-18.49.40-rqfk6hwtqn6rr7y9mv7805asue3748jxa0p86x7cf4.jpeg" alt="Indoor play zone">
+        <span class="tag">Play Space</span>
+      </div>
+      <div class="gallery-item" data-cat="play">
+        <img src="https://orchid-hippopotamus-237502.hostingersite.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2026-07-07-at-18.49.34-rqfk6c9xh24s9kte7g851i3hffpih2sesf4zwvclkw.jpeg" alt="Crèche setup">
+        <span class="tag">Crèche Setup</span>
+      </div>
+      <div class="gallery-item wide" data-cat="play">
+        <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1784284116/WhatsApp_Image_2026-07-08_at_08.11.36_kheia3.jpg" alt="On-site delivery">
+        <span class="tag">On-Site Delivery</span>
+      </div>
+      <div class="gallery-item" data-cat="play">
+        <img src="https://orchid-hippopotamus-237502.hostingersite.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2026-07-07-at-18.49.41-rqfk6iuquqb9rek5cc7o8dybruoslskwp25zmdpapc.jpeg" alt="Educational corner">
+        <span class="tag">Educational Corner</span>
+      </div>
+      <div class="gallery-item" data-cat="play">
+        <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1784283803/unnamed_6_wwgzgo.webp" alt="Colorful flooring">
+        <span class="tag">Play Zone Flooring</span>
+      </div>
+      <div class="gallery-item tall" data-cat="play">
+        <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1784283803/unnamed_4_gticwe.webp" alt="Childhood experience">
+        <span class="tag">Learning Corner</span>
+      </div>
+      <div class="gallery-item wide" data-cat="design">
+        <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1784282013/ChatGPT_Image_Jun_23_2026_08_18_26_PM_gir7ix.png" alt="Showroom concept">
+        <span class="tag">Design Concept</span>
+      </div>
+      <div class="gallery-item" data-cat="store">
+        <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1784282014/IMG_20260717_120131_695.jpg_yhc3kg.jpg" alt="Ohh Baby BBSR store">
+        <span class="tag">Ohh Baby BBSR</span>
+      </div>
+      <div class="gallery-item" data-cat="store">
+        <img src="https://res.cloudinary.com/dara80vtx/image/upload/f_auto,q_auto/v1784282011/IMG_4819_yslth9.heic" alt="Ohh Baby Jagamara store">
+        <span class="tag">Ohh Baby Jagamara</span>
+      </div>
+      <div class="gallery-item" data-cat="store">
+        <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1784282014/IMG_20260717_120153_312.jpg_yjqzif.jpg" alt="Store interior">
+        <span class="tag">Store Interior</span>
+      </div>
+      <div class="gallery-item tall" data-cat="raikala">
+        <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1784545229/144d9c5c-8d2e-48cc-bc26-b89e9768bc9d_gj9q4m.jpg" alt="Raikala Anganwadi Kendra">
+        <span class="tag">Raikala Anganwadi Kendra</span>
+      </div>
+      <div class="gallery-item" data-cat="raikala">
+        <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1784545228/c1111812-8559-4873-a082-3e5b00ad4d88_sxisfp.jpg" alt="Raikala Anganwadi Kendra">
+        <span class="tag">Raikala Anganwadi Kendra</span>
+      </div>
+      <div class="gallery-item wide" data-cat="raikala">
+        <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1784545228/e407510f-c6d8-4b81-93fe-b211df5726a5_khibl1.jpg" alt="Raikala Anganwadi Kendra">
+        <span class="tag">Raikala Anganwadi Kendra</span>
+      </div>
+      <div class="gallery-item" data-cat="raikala">
+        <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1784545228/7f8fd80d-c6d0-408c-a29d-a9b0cdfeb361_q44smn.jpg" alt="Raikala Anganwadi Kendra">
+        <span class="tag">Raikala Anganwadi Kendra</span>
+      </div>
+      <div class="gallery-item" data-cat="raikala">
+        <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1784545228/0429d846-4fb5-48f5-b75b-e293c2ecd236_akpy0m.jpg" alt="Raikala Anganwadi Kendra">
+        <span class="tag">Raikala Anganwadi Kendra</span>
+      </div>
     </div>
+  </div>
 </section>
 
-<!-- FINAL CTA -->
-<section class="cta-section">
-    <div class="container">
-        <h2>Like What You See?</h2>
-        <p>Get in touch for a factory-direct quote on full calibrated plywood, delivered straight to your godown.</p>
-        <button class="cta-btn-primary" onclick="location.href='https://www.eepronplywood.com/contact.html'">Get a Quote Today</button>
-    </div>
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lightboxClose">✕</span>
+  <span class="lightbox-nav prev" id="lightboxPrev">‹</span>
+  <img id="lightboxImg" src="" alt="">
+  <span class="lightbox-nav next" id="lightboxNext">›</span>
+</div>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Have A Space You'd Like Us To Transform?</h2>
+    <p>Get in touch and let's design something children will love.</p>
+    <a href="pitabash-enterprises.html#contact" class="btn">Contact Us</a>
+  </div>
 </section>
 
-<!-- IMAGE LIGHTBOX -->
-<div class="image-lightbox" id="imageLightbox">
-    <div class="image-lightbox-content">
-        <button class="image-lightbox-close" onclick="closeImageModal()">✕</button>
-        <img id="imageLightboxPic" src="" alt="EEPRON Plywood">
-    </div>
-</div>
-
-<!-- VIDEO LIGHTBOX -->
-<div class="video-lightbox" id="videoLightbox">
-    <div class="video-lightbox-content">
-        <button class="video-lightbox-close" onclick="closeVideoModal()">✕</button>
-        <video id="videoLightboxPlayer" controls playsinline></video>
-    </div>
-</div>
-
-<!-- FOOTER -->
 <footer id="contact">
-    <div class="container">
-        <div class="footer-inner">
-            <div class="footer-section">
-                <h3>EEPRON PLYWOOD</h3>
-                <p>A premium plywood manufacturing brand under United Enterprises, with factories in Kolkata &amp; Lucknow delivering full calibrated waterproof &amp; non-waterproof plywood across India.</p>
-            </div>
-            <div class="footer-section">
-                <h3>QUICK LINKS</h3>
-                <ul>
-                    <li><a href="https://www.eepronplywood.com/">Home</a></li>
-                    <li><a href="https://www.eepronplywood.com/about.html">About Us</a></li>
-                    <li><a href="https://www.eepronplywood.com/products.html">Products</a></li>
-                    <li><a href="https://www.eepronplywood.com/contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>CONTACT INFO</h3>
-                <ul>
-                    <li>Street No. 194, CE Block (Newtown), Action Area I, Kolkata, West Bengal</li>
-                    <li>📧 <a href="mailto:sales@eepronplywood.com">sales@eepronplywood.com</a></li>
-                    <li>📞 <a href="tel:+916290662274">+91 6290 662 274</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>BUSINESS HOURS</h3>
-                <ul>
-                    <li>Mon – Sat: 10:00 am – 07:00 pm</li>
-                    <li>Sunday: Closed</li>
-                </ul>
-            </div>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">
+          <img src="https://orchid-hippopotamus-237502.hostingersite.com/wp-content/uploads/2026/07/6f3552e7-ed33-4e20-9df2-e459625993d7-e1784097760874.png" alt="PEPL logo">
         </div>
-        <div class="footer-bottom">
-            <p>Copyright © 2026 EEPRON PLYWOOD - All Rights Reserved. A United Enterprises Brand.</p>
+        <p>Pitabash Enterprises Private Limited is dedicated to creating safe, engaging, and development-oriented spaces for children through innovative products, playgrounds, crèches, and educational infrastructure solutions.</p>
+        <div class="foot-contact"><span>✉</span> info@pitabash.com</div>
+        <div class="foot-contact"><span>☎</span> +91 98277 11991</div>
+        <div class="foot-contact"><span>📍</span> K7/310, Kalinganagar, Bhubaneswar, Shankarpur, Odisha 751029</div>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <div class="foot-links">
+          <a href="pitabash-enterprises.html">Welcome Home →</a>
+          <a href="about.html">About Us →</a>
+          <a href="gallery.html">Gallery →</a>
+          <a href="pitabash-enterprises.html#locations">Our Stores →</a>
         </div>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <div class="foot-links">
+          <a href="#">Our Service →</a>
+          <a href="#">Testimonials →</a>
+          <a href="#">Blog Stories →</a>
+          <a href="pitabash-enterprises.html#contact">Contact Us →</a>
+        </div>
+      </div>
+      <div>
+        <h4>Get Direction</h4>
+      </div>
     </div>
+    <div class="foot-bottom">
+      <span>Copyright © 2023. All rights reserved</span>
+      <div class="socials">
+        <span>𝕏</span><span>◎</span><span>▶</span><span>f</span>
+      </div>
+    </div>
+  </div>
 </footer>
 
-<!-- WHATSAPP -->
-<a href="https://wa.me/916290662274" class="whatsapp-float" target="_blank" aria-label="Message us on WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-1.732-.866-2.867-1.546-4.006-3.506-.302-.522.302-.484.864-1.612.095-.197.047-.371-.05-.52-.099-.149-.669-1.612-.916-2.207-.242-.578-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.05 3.13 4.974 4.26 2.926 1.131 2.926.755 3.45.71.526-.043 1.69-.69 1.93-1.36.235-.668.235-1.24.165-1.358-.07-.118-.272-.198-.57-.347zM12 2c5.523 0 10 4.477 10 10 0 5.523-4.477 10-10 10-1.79 0-3.466-.469-4.92-1.286l-5.08 1.286 1.285-5.08C2.469 15.466 2 13.79 2 12 2 6.477 6.477 2 12 2zm0 1.8c-4.529 0-8.2 3.671-8.2 8.2 0 1.633.477 3.155 1.301 4.434l.21.33-.708 2.797 2.797-.708.33.21A8.2 8.2 0 1 0 12 3.8z"/></svg>
-</a>
-
 <script>
-function toggleMenu() {
-    const mobileNav = document.getElementById('mobileNav');
-    const hamMenu = document.querySelector('.ham-menu');
-    mobileNav.classList.toggle('active');
-    hamMenu.classList.toggle('active');
-}
+  // Hamburger toggle
+  (function(){
+    const btn = document.getElementById('hamburgerBtn');
+    const nav = document.getElementById('mainNav');
+    if(!btn || !nav) return;
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('open');
+      nav.classList.toggle('open');
+    });
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        btn.classList.remove('open');
+        nav.classList.remove('open');
+      });
+    });
+  })();
 
-function openImageModal(src) {
-    const modal = document.getElementById('imageLightbox');
-    const pic = document.getElementById('imageLightboxPic');
-    pic.src = src;
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
+  // Filter tabs
+  (function(){
+    const tabs = document.querySelectorAll('.filter-tab');
+    const items = document.querySelectorAll('.gallery-item');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const filter = tab.dataset.filter;
+        items.forEach(item => {
+          if(filter === 'all' || item.dataset.cat === filter){
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+      });
+    });
+  })();
 
-function closeImageModal() {
-    const modal = document.getElementById('imageLightbox');
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
-}
+  // Lightbox
+  (function(){
+    const items = Array.from(document.querySelectorAll('.gallery-item'));
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeBtn = document.getElementById('lightboxClose');
+    const prevBtn = document.getElementById('lightboxPrev');
+    const nextBtn = document.getElementById('lightboxNext');
+    let current = 0;
 
-function openVideoModal(src) {
-    const modal = document.getElementById('videoLightbox');
-    const player = document.getElementById('videoLightboxPlayer');
-    player.src = src;
-    player.load();
-    player.play();
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeVideoModal() {
-    const modal = document.getElementById('videoLightbox');
-    const player = document.getElementById('videoLightboxPlayer');
-    player.pause();
-    player.src = '';
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
-}
-
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        closeImageModal();
-        closeVideoModal();
+    function openAt(i){
+      current = i;
+      const img = items[current].querySelector('img');
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add('open');
     }
-});
-</script>
+    function close(){ lightbox.classList.remove('open'); }
+    function nav(dir){
+      let i = current;
+      do{
+        i = (i + dir + items.length) % items.length;
+      } while(items[i].classList.contains('hidden') && i !== current);
+      openAt(i);
+    }
 
+    items.forEach((item, i) => {
+      item.addEventListener('click', () => openAt(i));
+    });
+    closeBtn.addEventListener('click', close);
+    lightbox.addEventListener('click', (e) => { if(e.target === lightbox) close(); });
+    prevBtn.addEventListener('click', () => nav(-1));
+    nextBtn.addEventListener('click', () => nav(1));
+    document.addEventListener('keydown', (e) => {
+      if(!lightbox.classList.contains('open')) return;
+      if(e.key === 'Escape') close();
+      if(e.key === 'ArrowLeft') nav(-1);
+      if(e.key === 'ArrowRight') nav(1);
+    });
+  })();
+</script>
 </body>
 </html>
