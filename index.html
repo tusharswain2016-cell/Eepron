@@ -504,7 +504,6 @@
             box-shadow: 0 6px 20px rgba(74,46,26,0.06);
         }
         .service-card:hover { box-shadow: 0 14px 30px rgba(217,156,43,0.2); border-color: var(--accent-gold); }
-        .service-card:active { transform: scale(0.98); }
         .service-card-image {
             height: 300px;
             background-size: contain;
@@ -1027,6 +1026,91 @@
         .hero-slide-arrow-left { left: 24px; }
         .hero-slide-arrow-right { right: 24px; }
 
+        /* ── ENQUIRY MODAL ── */
+        .enquiry-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(20, 12, 5, 0.65);
+            -webkit-backdrop-filter: blur(3px);
+            backdrop-filter: blur(3px);
+            z-index: 800;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .enquiry-overlay.active { display: flex; opacity: 1; }
+        .enquiry-modal {
+            background: #fff;
+            width: 100%;
+            max-width: 480px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 12px;
+            position: relative;
+            padding: 40px 36px 34px;
+            transform: translateY(24px) scale(0.97);
+            transition: transform 0.32s cubic-bezier(0.22,1,0.36,1);
+            box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+        }
+        .enquiry-overlay.active .enquiry-modal { transform: translateY(0) scale(1); }
+        .enquiry-close {
+            position: absolute;
+            top: 16px; right: 16px;
+            width: 34px; height: 34px;
+            border-radius: 50%;
+            border: 1px solid #eee2d0;
+            background: #fdf9f2;
+            color: var(--text-dark);
+            font-size: 16px;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .enquiry-close:hover { background: var(--accent-gold); color: #fff; border-color: var(--accent-gold); }
+        .enquiry-eyebrow {
+            font-size: 11px; letter-spacing: 2px; color: var(--accent-gold);
+            font-weight: 700; text-transform: uppercase; margin-bottom: 8px;
+        }
+        .enquiry-modal h3 {
+            font-size: 26px; font-weight: 900; color: var(--text-dark);
+            text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; line-height: 1.15;
+        }
+        .enquiry-modal p.enquiry-sub { font-size: 13.5px; color: #777; margin-bottom: 24px; line-height: 1.6; }
+        .enquiry-field { margin-bottom: 16px; }
+        .enquiry-field label {
+            display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
+            color: var(--text-dark); margin-bottom: 6px; text-transform: uppercase;
+        }
+        .enquiry-field input, .enquiry-field select, .enquiry-field textarea {
+            width: 100%; padding: 12px 14px; border: 1px solid #e2d8c4; border-radius: 6px;
+            font-family: 'Saira Condensed', sans-serif; font-size: 14px; color: var(--text-dark);
+            background: #fdfbf7; transition: border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+        .enquiry-field input:focus, .enquiry-field select:focus, .enquiry-field textarea:focus {
+            outline: none; border-color: var(--accent-gold); box-shadow: 0 0 0 3px rgba(217,156,43,0.18);
+        }
+        .enquiry-field textarea { resize: vertical; min-height: 80px; }
+        .enquiry-submit {
+            width: 100%; margin-top: 6px; padding: 14px; border: none; border-radius: 6px;
+            background: var(--accent-gold); color: #fff; font-family: 'Saira Condensed', sans-serif;
+            font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+            cursor: pointer; transition: background 0.25s ease, transform 0.15s ease;
+        }
+        .enquiry-submit:hover { background: #b87f1f; }
+        .enquiry-submit:active { transform: scale(0.98); }
+        .enquiry-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+        .enquiry-status {
+            margin-top: 14px; font-size: 13px; text-align: center; display: none; line-height: 1.6;
+        }
+        .enquiry-status.success { display: block; color: #1a7a3e; }
+        .enquiry-status.error { display: block; color: #c0392b; }
+        @media (max-width: 480px) {
+            .enquiry-modal { padding: 32px 22px 26px; max-width: 100%; }
+            .enquiry-modal h3 { font-size: 21px; }
+        }
+
         /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
             :root { --container-max: 900px; }
@@ -1234,7 +1318,7 @@
         <div class="top-bar-logo">
             <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1783059499/EEPRON_LOGO.JPG_js6iok.jpg" alt="EEPRON Plywood Logo">
         </div>
-        <button class="cta-button" style="padding:12px 30px;font-size:12px;letter-spacing:1px;" onclick="location.href='https://www.eepronplywood.com/contact.html'">GET FREE QUOTE</button>
+        <button class="cta-button" style="padding:12px 30px;font-size:12px;letter-spacing:1px;" onclick="openEnquiryModal('Header Get Free Quote')">GET FREE QUOTE</button>
         <button class="ham-menu" onclick="toggleMenu()">
             <span></span>
             <span></span>
@@ -1302,7 +1386,7 @@
     </div>
     <div class="mobile-nav-footer">
         <a class="mobile-nav-phone" href="tel:+916290662274"><span>📞</span> +91 6290 662 274</a>
-        <button class="cta-button" onclick="location.href='https://www.eepronplywood.com/contact.html'">GET FREE QUOTE</button>
+        <button class="cta-button" onclick="toggleMenu(); openEnquiryModal('Mobile Nav Get Free Quote')">GET FREE QUOTE</button>
     </div>
 </div>
 
@@ -1652,7 +1736,7 @@
         <div class="carousel-dots" id="carouselDots"></div>
 
         <div style="text-align:center;margin-top:40px;">
-            <button class="cta-button" onclick="location.href='https://www.eepronplywood.com/contact.html'">REQUEST CUSTOM QUOTE</button>
+            <button class="cta-button" onclick="openEnquiryModal('Custom Product Quote')">REQUEST CUSTOM QUOTE</button>
         </div>
     </div>
 </section>
@@ -1801,7 +1885,7 @@
                 <li><span>→</span> Custom branding &amp; private labelling for dealers</li>
                 <li><span>→</span> Dedicated support from order to delivery</li>
             </ul>
-            <button class="cta-button" style="margin-top:10px;" onclick="location.href='https://www.eepronplywood.com/contact.html'">REQUEST BULK QUOTE</button>
+            <button class="cta-button" style="margin-top:10px;" onclick="openEnquiryModal('Bulk Order Enquiry')">REQUEST BULK QUOTE</button>
         </div>
         <div class="financing-img-group">
             <div class="financing-img" style="background-image:url('https://res.cloudinary.com/dxmdcoca3/image/upload/v1782285955/66492864-d8fd-4ed8-90c4-14261e2c95be_1_sbhphv.jpg');"></div>
@@ -1815,10 +1899,10 @@
     <div class="newsletter-inner">
         <h2>STAY UPDATED WITH EEPRON PLYWOOD</h2>
         <p>Subscribe for new product launches, dealer offers &amp; factory updates</p>
-        <div class="newsletter-form">
-            <input type="email" placeholder="Enter your email address">
+        <form class="newsletter-form" id="newsletterForm">
+            <input type="email" name="email" id="newsletterEmail" placeholder="Enter your email address" required>
             <button type="submit">SUBSCRIBE</button>
-        </div>
+        </form>
     </div>
 </section>
 
@@ -1866,6 +1950,52 @@
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-1.732-.866-2.867-1.546-4.006-3.506-.302-.522.302-.484.864-1.612.095-.197.047-.371-.05-.52-.099-.149-.669-1.612-.916-2.207-.242-.578-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.05 3.13 4.974 4.26 2.926 1.131 2.926.755 3.45.71.526-.043 1.69-.69 1.93-1.36.235-.668.235-1.24.165-1.358-.07-.118-.272-.198-.57-.347zM12 2c5.523 0 10 4.477 10 10 0 5.523-4.477 10-10 10-1.79 0-3.466-.469-4.92-1.286l-5.08 1.286 1.285-5.08C2.469 15.466 2 13.79 2 12 2 6.477 6.477 2 12 2zm0 1.8c-4.529 0-8.2 3.671-8.2 8.2 0 1.633.477 3.155 1.301 4.434l.21.33-.708 2.797 2.797-.708.33.21A8.2 8.2 0 1 0 12 3.8z"/></svg>
 </a>
 
+<!-- ENQUIRY MODAL (popup form -> emails sales@eepronplywood.com) -->
+<div class="enquiry-overlay" id="enquiryOverlay" onclick="if(event.target===this) closeEnquiryModal()">
+    <div class="enquiry-modal">
+        <button class="enquiry-close" onclick="closeEnquiryModal()" aria-label="Close">✕</button>
+        <div class="enquiry-eyebrow">EEPRON Plywood</div>
+        <h3 id="enquiryTitle">Request a Free Quote</h3>
+        <p class="enquiry-sub">Share your requirement and our team will get back to you shortly.</p>
+        <form id="enquiryForm">
+            <input type="hidden" name="_subject" id="enquirySubjectField" value="New Website Enquiry - EEPRON Plywood">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="source" id="enquirySourceField" value="">
+            <div class="enquiry-field">
+                <label for="enqName">Full Name</label>
+                <input type="text" id="enqName" name="Name" required>
+            </div>
+            <div class="enquiry-field">
+                <label for="enqPhone">Phone / WhatsApp Number</label>
+                <input type="tel" id="enqPhone" name="Phone" required>
+            </div>
+            <div class="enquiry-field">
+                <label for="enqEmail">Email Address</label>
+                <input type="email" id="enqEmail" name="Email" required>
+            </div>
+            <div class="enquiry-field">
+                <label for="enqProduct">Product Interested In</label>
+                <select id="enqProduct" name="Product Interest">
+                    <option value="Not sure / General enquiry">Not sure / General enquiry</option>
+                    <option value="EEPRON Marine">EEPRON Marine</option>
+                    <option value="EEPRON Club">EEPRON Club</option>
+                    <option value="EEPRON Star">EEPRON Star</option>
+                    <option value="Shuttering Plywood">Shuttering Plywood</option>
+                    <option value="Customized Plywood">Customized Plywood</option>
+                    <option value="Bulk / Dealer Order">Bulk / Dealer Order</option>
+                </select>
+            </div>
+            <div class="enquiry-field">
+                <label for="enqMessage">Message</label>
+                <textarea id="enqMessage" name="Message" placeholder="Quantity, thickness, delivery location, etc."></textarea>
+            </div>
+            <button type="submit" class="enquiry-submit" id="enquirySubmitBtn">Send Enquiry</button>
+            <div class="enquiry-status" id="enquiryStatus"></div>
+        </form>
+    </div>
+</div>
+
 <script>
 function toggleMenu() {
     const mobileNav = document.getElementById('mobileNav');
@@ -1896,6 +2026,87 @@ function closeVideoModal() {
     document.body.style.overflow = 'auto';
 }
 
+/* ── ENQUIRY POPUP MODAL ──
+   Opens a popup form from any "Get Quote" / "Enquiry" button. Every
+   submission POSTs to FormSubmit (no backend required) which forwards
+   the enquiry straight to sales@eepronplywood.com. */
+function openEnquiryModal(source) {
+    const overlay = document.getElementById('enquiryOverlay');
+    const title = document.getElementById('enquiryTitle');
+    const subjectField = document.getElementById('enquirySubjectField');
+    const sourceField = document.getElementById('enquirySourceField');
+    const status = document.getElementById('enquiryStatus');
+    const submitBtn = document.getElementById('enquirySubmitBtn');
+    const form = document.getElementById('enquiryForm');
+
+    // Reset form state each time it's opened
+    form.reset();
+    status.className = 'enquiry-status';
+    status.textContent = '';
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Send Enquiry';
+
+    title.textContent = source ? source : 'Request a Free Quote';
+    subjectField.value = 'New Website Enquiry - ' + (source || 'EEPRON Plywood');
+    sourceField.value = source || 'General';
+
+    overlay.classList.add('active');
+    document.body.classList.add('nav-open');
+}
+
+function closeEnquiryModal() {
+    document.getElementById('enquiryOverlay').classList.remove('active');
+    document.body.classList.remove('nav-open');
+}
+
+document.getElementById('enquiryForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const form = e.target;
+    const submitBtn = document.getElementById('enquirySubmitBtn');
+    const status = document.getElementById('enquiryStatus');
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    status.className = 'enquiry-status';
+    status.textContent = '';
+
+    fetch('https://formsubmit.co/ajax/sales@eepronplywood.com', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+    })
+    .then(res => res.json())
+    .then(() => {
+        status.className = 'enquiry-status success';
+        status.textContent = "Thank you! Your enquiry has been sent to sales@eepronplywood.com. Our team will contact you shortly.";
+        submitBtn.textContent = 'Sent ✓';
+        setTimeout(closeEnquiryModal, 2200);
+    })
+    .catch(() => {
+        status.className = 'enquiry-status error';
+        status.textContent = "Couldn't send right now. Please call +91 6290 662 274 or WhatsApp us directly.";
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Enquiry';
+    });
+});
+
+document.getElementById('newsletterForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const email = document.getElementById('newsletterEmail').value;
+    const fd = new FormData();
+    fd.append('email', email);
+    fd.append('_subject', 'New Newsletter Signup - EEPRON Plywood');
+    fd.append('_captcha', 'false');
+    fetch('https://formsubmit.co/ajax/sales@eepronplywood.com', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: fd
+    }).finally(() => {
+        alert('Thanks for subscribing!');
+        e.target.reset();
+    });
+});
+
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
         const modal = document.getElementById('videoLightbox');
@@ -1905,6 +2116,10 @@ document.addEventListener('keydown', function(event) {
         const mobileNav = document.getElementById('mobileNav');
         if (mobileNav.classList.contains('active')) {
             toggleMenu();
+        }
+        const enquiryOverlay = document.getElementById('enquiryOverlay');
+        if (enquiryOverlay.classList.contains('active')) {
+            closeEnquiryModal();
         }
     }
 });
