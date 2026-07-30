@@ -24,46 +24,61 @@
             --container-max: 1200px;
         }
 
-        /* ── HEADER ── */
-        header {
-            background: var(--primary-dark);
-            position: relative;
-            width: 100%;
+        .container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 80px;
         }
+        @media (max-width: 900px) { .container { padding: 0 32px; } }
+        @media (max-width: 480px) { .container { padding: 0 20px; } }
+
+        /* ── HEADER (matches Products page) ── */
+        header {
+            background: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 300;
+            width: 100%;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+        header.header-hidden { transform: translateY(-100%); }
+        header.header-scrolled { box-shadow: 0 6px 20px rgba(0,0,0,0.25); }
         header > div:first-child {
             background: transparent;
             padding: 20px 80px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(255,255,255,0.15);
+            border-bottom: 1px solid rgba(0,0,0,0.08);
         }
         .top-bar-phone {
-            color: #fff;
+            color: var(--text-dark);
             font-size: 16px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
-        .top-bar-phone a { color: #fff; text-decoration: none; font-weight: 700; }
-        .top-bar-logo { flex: 1; display: flex; justify-content: center; }
-        .top-bar-logo img { height: 72px; display: block; }
-        .nav-wrapper { margin: 0 80px; border: 1px solid rgba(255,255,255,0.2); display: flex; }
+        .top-bar-phone span { font-size: 20px; }
+        .top-bar-phone a { color: var(--text-dark); text-decoration: none; font-weight: 700; letter-spacing: 0.5px; }
+        .top-bar-logo { text-align: center; flex: 1; display: flex; justify-content: center; align-items: center; }
+        .top-bar-logo img { height: 100px; display: block; }
+        .nav-wrapper { margin: 0 80px; border: 1px solid rgba(0,0,0,0.12); display: flex; }
         nav { width: 100%; }
         nav ul { display: flex; list-style: none; gap: 0; margin: 0; }
-        nav li { flex: 1; text-align: center; border-right: 1px solid rgba(255,255,255,0.15); }
+        nav li { flex: 1; text-align: center; border-right: 1px solid rgba(0,0,0,0.08); }
         nav li:last-child { border-right: none; }
         nav a {
-            color: #fff;
+            color: var(--text-dark);
             text-decoration: none;
             font-size: 12px;
             letter-spacing: 1.5px;
+            transition: color 0.3s;
             display: block;
             font-weight: 700;
             padding: 18px 10px;
-            transition: all 0.3s;
         }
-        nav a:hover { color: var(--accent-gold); background: rgba(217,156,43,0.1); }
+        nav a:hover, nav a.active { color: var(--accent-gold); background: rgba(217,156,43,0.1); }
         .cta-button {
             background: var(--accent-gold);
             color: white;
@@ -72,12 +87,14 @@
             font-size: 13px;
             letter-spacing: 1px;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: transform 0.18s ease, background 0.3s;
+            text-decoration: none;
             display: inline-block;
             font-family: 'Saira Condensed', sans-serif;
             font-weight: 700;
         }
         .cta-button:hover { background: #b87f1f; }
+        .cta-button:active { transform: scale(0.96); }
 
         /* ── HAMBURGER MENU ── */
         .ham-menu {
@@ -93,7 +110,7 @@
         .ham-menu span {
             width: 25px;
             height: 2.5px;
-            background: #fff;
+            background: var(--text-dark);
             border-radius: 2px;
             transition: all 0.3s ease;
         }
@@ -101,32 +118,77 @@
         .ham-menu.active span:nth-child(2) { opacity: 0; }
         .ham-menu.active span:nth-child(3) { transform: rotate(-45deg) translateY(-10px); }
 
-        /* ── MOBILE NAV ── */
-        .mobile-nav {
+        .mobile-nav-backdrop {
             display: none;
             position: fixed;
+            inset: 0;
+            background: rgba(10, 6, 3, 0.55);
+            -webkit-backdrop-filter: blur(2px);
+            backdrop-filter: blur(2px);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+        .mobile-nav-backdrop.active { display: block; opacity: 1; }
+
+        .mobile-nav {
+            position: fixed;
             top: 0;
-            left: 0;
-            width: 100%;
+            right: 0;
+            width: min(86%, 360px);
             height: 100vh;
-            background: rgba(0, 0, 0, 0.95);
+            height: 100dvh;
+            background: linear-gradient(180deg, #2e1c10 0%, #1a1007 100%);
+            display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
             z-index: 1000;
+            transform: translateX(100%);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: -12px 0 40px rgba(0,0,0,0.35);
+            overflow-y: auto;
         }
-        .mobile-nav.active { display: flex; }
+        .mobile-nav.active { transform: translateX(0); }
+        .mobile-nav-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 22px 24px; border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .mobile-nav-header img { height: 42px; display: block; }
+        .mobile-nav-close {
+            width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 50%; background: transparent; color: #fff; font-size: 18px;
+            display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0;
+        }
+        .mobile-nav-close:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
+        .mobile-nav-links { display: flex; flex-direction: column; padding: 12px 0; }
         .mobile-nav a {
-            color: #fff;
-            font-size: 24px;
-            text-decoration: none;
-            margin: 20px 0;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: color 0.3s;
+            color: #fff; font-size: 16px; text-decoration: none; font-weight: 700;
+            letter-spacing: 1.5px; text-transform: uppercase;
+            padding: 18px 28px; border-bottom: 1px solid rgba(255,255,255,0.06);
+            display: flex; align-items: center; justify-content: space-between;
+            opacity: 0; transform: translateX(24px);
+            transition: opacity 0.4s ease, transform 0.4s ease, color 0.25s ease, background 0.25s ease;
         }
-        .mobile-nav a:hover { color: var(--accent-gold); }
+        .mobile-nav a::after { content: '›'; font-size: 20px; color: rgba(255,255,255,0.35); font-weight: 400; }
+        .mobile-nav a:hover, .mobile-nav a:active, .mobile-nav a.active { color: var(--accent-gold); background: rgba(217,156,43,0.08); }
+        .mobile-nav.active .mobile-nav-links a { opacity: 1; transform: translateX(0); }
+        .mobile-nav.active .mobile-nav-links a:nth-child(1) { transition-delay: 0.08s; }
+        .mobile-nav.active .mobile-nav-links a:nth-child(2) { transition-delay: 0.14s; }
+        .mobile-nav.active .mobile-nav-links a:nth-child(3) { transition-delay: 0.20s; }
+        .mobile-nav.active .mobile-nav-links a:nth-child(4) { transition-delay: 0.26s; }
+        .mobile-nav.active .mobile-nav-links a:nth-child(5) { transition-delay: 0.32s; }
+        .mobile-nav-footer {
+            margin-top: auto; padding: 24px 28px 32px; border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0; transform: translateY(16px);
+            transition: opacity 0.45s ease 0.36s, transform 0.45s ease 0.36s;
+        }
+        .mobile-nav.active .mobile-nav-footer { opacity: 1; transform: translateY(0); }
+        .mobile-nav-footer .mobile-nav-phone {
+            display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none;
+            font-size: 15px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 18px;
+        }
+        .mobile-nav-footer .mobile-nav-phone span { font-size: 18px; }
+        .mobile-nav-footer .cta-button { display: block; width: 100%; text-align: center; padding: 15px; }
+        body.nav-open { overflow: hidden; }
 
         /* ── HERO BANNER ── */
         .hero-about {
@@ -154,15 +216,6 @@
             opacity: 0.95;
             line-height: 1.7;
         }
-
-        /* ── CONTAINER ── */
-        .container {
-            max-width: var(--container-max);
-            margin: 0 auto;
-            padding: 0 80px;
-        }
-        @media (max-width: 900px) { .container { padding: 0 40px; } }
-        @media (max-width: 480px) { .container { padding: 0 20px; } }
 
         /* ── SECTIONS ── */
         .section {
@@ -518,50 +571,56 @@
         }
         .cta-btn-secondary:hover { background: var(--accent-gold); color: white; }
 
-        /* ── FOOTER ── */
-        footer {
-            background: #2e1c10;
-            color: #ddd;
-            padding: 60px 0 30px;
-        }
+        /* ── FOOTER (matches Products page) ── */
+        footer { background: #2e1c10; color: #ddd; padding: 60px 0 30px; }
         .footer-inner {
-            display: grid;
-            grid-template-columns: 2fr 1fr 2fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
+            max-width: var(--container-max); margin: 0 auto; padding: 0 80px;
+            display: grid; grid-template-columns: 2fr 1fr 2fr 1fr; gap: 40px; margin-bottom: 40px;
         }
-        .footer-section h3 {
-            color: #fff;
-            margin-bottom: 15px;
-            font-size: 14px;
-            letter-spacing: 1px;
-        }
+        .footer-section h3 { color: #fff; margin-bottom: 15px; font-size: 14px; }
         .footer-section ul { list-style: none; }
         .footer-section ul li { margin-bottom: 10px; font-size: 13px; }
         .footer-section a { color: #ddd; text-decoration: none; transition: color 0.3s; }
         .footer-section a:hover { color: var(--accent-gold); }
         .footer-section p { font-size: 13px; line-height: 1.8; }
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding: 20px 80px 0;
-            text-align: center;
-            font-size: 12px;
-            color: #999;
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding: 20px 80px 0; text-align: center; font-size: 12px; color: #999; max-width: var(--container-max); margin: 0 auto; }
+
+        /* ── WHATSAPP ── */
+        .whatsapp-float {
+            position: fixed; bottom: 25px; right: 25px; z-index: 200;
+            background: #25D366; width: 58px; height: 58px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3); text-decoration: none; transition: transform 0.3s;
         }
+        .whatsapp-float:hover { transform: scale(1.08); }
+        .whatsapp-float svg { width: 30px; height: 30px; fill: #fff; z-index: 2; position: relative; }
+        .whatsapp-float::before {
+            content: ''; position: absolute; inset: 0; border-radius: 50%;
+            background: #25D366; animation: whatsappPulse 2.4s ease-out infinite; z-index: 1;
+        }
+        @keyframes whatsappPulse { 0% { transform: scale(1); opacity: 0.55; } 100% { transform: scale(1.9); opacity: 0; } }
 
         /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            :root { --container-max: 900px; }
+            .container { padding: 0 40px; }
+            header > div:first-child { padding: 20px 40px; }
+            .nav-wrapper { margin: 0 40px; }
+            .footer-inner { padding: 0 40px; }
+            .footer-bottom { padding: 20px 40px 0; }
+        }
+
         @media (max-width: 768px) {
-            header > div:first-child {
-                padding: 15px 20px;
-                flex-wrap: wrap;
-                justify-content: space-between;
-                border-bottom: 1px solid rgba(255,255,255,0.15);
-            }
-            .nav-wrapper { display: none; margin: 0; border: none; }
-            .top-bar-logo { flex: 0; }
-            .top-bar-logo img { height: 40px; }
+            header > div:first-child { padding: 12px 18px; justify-content: space-between; gap: 10px; }
+            .nav-wrapper { display: none; }
+            .top-bar-logo { flex: 0; justify-content: flex-start; }
+            .top-bar-logo img { height: 60px; }
+            .top-bar-phone { display: none; }
             .cta-button { display: none; }
-            .ham-menu { display: flex; }
+            .ham-menu {
+                display: flex; width: 40px; height: 40px; align-items: center; justify-content: center;
+                border: 1px solid rgba(0,0,0,0.15); border-radius: 50%; padding: 0;
+            }
             .hero-about {
                 height: auto;
                 padding: 60px 24px 60px;
@@ -581,13 +640,16 @@
             .why-grid { grid-template-columns: 1fr; }
             .cert-grid { grid-template-columns: 1fr; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .footer-inner { grid-template-columns: 1fr; }
+            .footer-inner { grid-template-columns: 1fr; padding: 0 24px; gap: 34px; margin-bottom: 34px; }
             .footer-bottom { padding: 20px 24px 0; }
             .section-title { font-size: 32px; }
             .mvv-card h3 { font-size: 20px; }
+            .whatsapp-float { width: 52px; height: 52px; bottom: 18px; right: 18px; }
+            .whatsapp-float svg { width: 26px; height: 26px; }
         }
 
         @media (max-width: 480px) {
+            .top-bar-logo img { height: 50px; }
             .hero-about { padding: 50px 20px 40px; }
             .hero-about h1 { font-size: 28px; }
             .story-text h3 { font-size: 24px; }
@@ -601,7 +663,7 @@
 </head>
 <body>
 
-<!-- HEADER -->
+<!-- HEADER (matches Products page) -->
 <header>
     <div>
         <div class="top-bar-phone">
@@ -611,7 +673,7 @@
         <div class="top-bar-logo">
             <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1783059499/EEPRON_LOGO.JPG_js6iok.jpg" alt="EEPRON Plywood Logo">
         </div>
-        <button class="cta-button" onclick="location.href='https://www.eepronplywood.com/contact.html'">GET FREE QUOTE</button>
+        <button class="cta-button" style="padding:12px 30px;font-size:12px;letter-spacing:1px;" onclick="location.href='https://www.eepronplywood.com/contact.html'">GET FREE QUOTE</button>
         <button class="ham-menu" onclick="toggleMenu()">
             <span></span>
             <span></span>
@@ -622,7 +684,7 @@
         <nav>
             <ul>
                 <li><a href="https://www.eepronplywood.com/">HOME</a></li>
-                <li><a href="#about">ABOUT</a></li>
+                <li><a href="https://www.eepronplywood.com/about.html" class="active">ABOUT US</a></li>
                 <li><a href="https://www.eepronplywood.com/products.html">PRODUCTS</a></li>
                 <li><a href="https://www.eepronplywood.com/gallery.html">GALLERY</a></li>
                 <li><a href="https://www.eepronplywood.com/contact.html">CONTACT</a></li>
@@ -631,13 +693,26 @@
     </div>
 </header>
 
+<!-- MOBILE NAV BACKDROP -->
+<div class="mobile-nav-backdrop" id="mobileNavBackdrop" onclick="toggleMenu()"></div>
+
 <!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobileNav">
-    <a href="https://www.eepronplywood.com/" onclick="toggleMenu()">HOME</a>
-    <a href="#about" onclick="toggleMenu()">ABOUT</a>
-    <a href="https://www.eepronplywood.com/products.html" onclick="toggleMenu()">PRODUCTS</a>
-    <a href="https://www.eepronplywood.com/gallery.html" onclick="toggleMenu()">GALLERY</a>
-    <a href="https://www.eepronplywood.com/contact.html" onclick="toggleMenu()">CONTACT</a>
+    <div class="mobile-nav-header">
+        <img src="https://res.cloudinary.com/dara80vtx/image/upload/v1783059499/EEPRON_LOGO.JPG_js6iok.jpg" alt="EEPRON Plywood Logo">
+        <button class="mobile-nav-close" onclick="toggleMenu()" aria-label="Close menu">✕</button>
+    </div>
+    <div class="mobile-nav-links">
+        <a href="https://www.eepronplywood.com/" onclick="toggleMenu()">Home</a>
+        <a href="https://www.eepronplywood.com/about.html" class="active" onclick="toggleMenu()">About Us</a>
+        <a href="https://www.eepronplywood.com/products.html" onclick="toggleMenu()">Products</a>
+        <a href="https://www.eepronplywood.com/gallery.html" onclick="toggleMenu()">Gallery</a>
+        <a href="https://www.eepronplywood.com/contact.html" onclick="toggleMenu()">Contact</a>
+    </div>
+    <div class="mobile-nav-footer">
+        <a class="mobile-nav-phone" href="tel:+916290662274"><span>📞</span> +91 6290 662 274</a>
+        <button class="cta-button" onclick="location.href='https://www.eepronplywood.com/contact.html'">GET FREE QUOTE</button>
+    </div>
 </div>
 
 <!-- HERO BANNER -->
@@ -788,8 +863,6 @@
     </div>
 </section>
 
-
-
 <!-- LEADERSHIP TEAM -->
 <section class="section light">
     <div class="container">
@@ -880,53 +953,102 @@
     </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-    <div class="container">
-        <div class="footer-inner">
-            <div class="footer-section">
-                <h3>EEPRON PLYWOOD</h3>
-                <p>A United Enterprises brand delivering premium calibrated plywood across India since 2003. ISO 9001:2015 certified manufacturing with two state-of-the-art facilities.</p>
-            </div>
-            <div class="footer-section">
-                <h3>QUICK LINKS</h3>
-                <ul>
-                    <li><a href="https://www.eepronplywood.com/">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="https://www.eepronplywood.com/products.html">Products</a></li>
-                    <li><a href="https://www.eepronplywood.com/contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>CONTACT INFO</h3>
-                <ul>
-                    <li>Street No. 194, CE Block (Newtown), Action Area I, Kolkata, West Bengal</li>
-                    <li>📧 <a href="mailto:sales@eepronplywood.com">sales@eepronplywood.com</a></li>
-                    <li>📞 <a href="tel:+916290662274">+91 6290 662 274</a></li>
-                    <li><a href="https://wa.me/916290662274">WhatsApp Us</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>BUSINESS HOURS</h3>
-                <ul>
-                    <li>Mon – Sat: 10:00 am – 07:00 pm</li>
-                    <li>Sunday: Closed</li>
-                </ul>
-            </div>
+<!-- FOOTER (matches Products page) -->
+<footer id="contact">
+    <div class="footer-inner">
+        <div class="footer-section">
+            <h3>EEPRON PLYWOOD</h3>
+            <p>A premium plywood manufacturing brand under United Enterprises, with a factory in Kolkata delivering full calibrated waterproof &amp; non-waterproof plywood across India.</p>
         </div>
-        <div class="footer-bottom">
-            <p>Copyright © 2026 EEPRON PLYWOOD - All Rights Reserved. A United Enterprises Brand.</p>
+        <div class="footer-section">
+            <h3>QUICK LINKS</h3>
+            <ul>
+                <li><a href="https://www.eepronplywood.com/products.html">Our Products</a></li>
+                <li><a href="https://www.eepronplywood.com/#orders">Bulk Orders</a></li>
+                <li><a href="https://www.eepronplywood.com/about.html">About Us</a></li>
+                <li><a href="https://www.eepronplywood.com/contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>CONTACT INFO</h3>
+            <ul>
+                <li>EEPRON Plywood — United Enterprises</li>
+                <li>Street No. 194, CE Block (Newtown), Action Area I, Kolkata, West Bengal</li>
+                <li><a href="mailto:sales@eepronplywood.com">📧 sales@eepronplywood.com</a></li>
+                <li><a href="tel:+916290662274">📞 +91 6290 662 274</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>BUSINESS HOURS</h3>
+            <ul>
+                <li>Mon – Sat: 10:00 am – 07:00 pm</li>
+                <li>Sunday: Closed</li>
+            </ul>
         </div>
     </div>
+    <div class="footer-bottom">
+        <p>EEPRON PLYWOOD — UNITED ENTERPRISES | sales@eepronplywood.com</p>
+        <p style="margin-top:8px;">Copyright &copy; 2026 EEPRON PLYWOOD - All Rights Reserved.</p>
+    </div>
 </footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/916290662274" class="whatsapp-float" target="_blank" aria-label="Message us on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-1.732-.866-2.867-1.546-4.006-3.506-.302-.522.302-.484.864-1.612.095-.197.047-.371-.05-.52-.099-.149-.669-1.612-.916-2.207-.242-.578-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.05 3.13 4.974 4.26 2.926 1.131 2.926.755 3.45.71.526-.043 1.69-.69 1.93-1.36.235-.668.235-1.24.165-1.358-.07-.118-.272-.198-.57-.347zM12 2c5.523 0 10 4.477 10 10 0 5.523-4.477 10-10 10-1.79 0-3.466-.469-4.92-1.286l-5.08 1.286 1.285-5.08C2.469 15.466 2 13.79 2 12 2 6.477 6.477 2 12 2zm0 1.8c-4.529 0-8.2 3.671-8.2 8.2 0 1.633.477 3.155 1.301 4.434l.21.33-.708 2.797 2.797-.708.33.21A8.2 8.2 0 1 0 12 3.8z"/></svg>
+</a>
 
 <script>
 function toggleMenu() {
     const mobileNav = document.getElementById('mobileNav');
+    const backdrop = document.getElementById('mobileNavBackdrop');
     const hamMenu = document.querySelector('.ham-menu');
     mobileNav.classList.toggle('active');
+    backdrop.classList.toggle('active');
     hamMenu.classList.toggle('active');
+    document.body.classList.toggle('nav-open');
 }
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        const mobileNav = document.getElementById('mobileNav');
+        if (mobileNav.classList.contains('active')) {
+            toggleMenu();
+        }
+    }
+});
+
+/* ── SMART HEADER (mobile) ── */
+(function () {
+    const header = document.querySelector('header');
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    function onScroll() {
+        const currentY = window.scrollY;
+        const isMobile = window.innerWidth <= 768;
+
+        if (isMobile) {
+            header.classList.toggle('header-scrolled', currentY > 10);
+            if (currentY > lastScrollY && currentY > 120) {
+                header.classList.add('header-hidden');
+            } else {
+                header.classList.remove('header-hidden');
+            }
+        } else {
+            header.classList.remove('header-hidden');
+            header.classList.remove('header-scrolled');
+        }
+        lastScrollY = currentY;
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', function () {
+        if (!ticking) {
+            window.requestAnimationFrame(onScroll);
+            ticking = true;
+        }
+    }, { passive: true });
+})();
 </script>
 
 </body>
